@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenhouse.mapper.CustomerMapper">
+    <insert id="registerCustomer" parameterType="customer">
+            <![CDATA[
+                                      insert into
+                                      t_cus(c_no,c_pwd)
+                                      values(#{cNo},MD5(#{cPwd}))
+        ]]>
+    </insert>
+</mapper>
