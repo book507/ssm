@@ -7,11 +7,17 @@ public class Admin {
     //管理员ID
     private Integer adminId;
     //管理员账号名
-    private String adminName;
+    private String adminNo;
     //管理员账号密码
     private String adminPassword;
 
     public Admin() {
+    }
+
+    public Admin(Integer adminId , String adminNo , String adminPassword) {
+        this.adminId=adminId;
+        this.adminNo=adminNo;
+        this.adminPassword=adminPassword;
     }
 
     public Integer getAdminId() {
@@ -22,12 +28,12 @@ public class Admin {
         this.adminId=adminId;
     }
 
-    public String getAdminName() {
-        return adminName;
+    public String getAdminNo() {
+        return adminNo;
     }
 
-    public void setAdminName(String adminName) {
-        this.adminName=adminName;
+    public void setAdminNo(String adminNo) {
+        this.adminNo=adminNo;
     }
 
     public String getAdminPassword() {
@@ -42,7 +48,7 @@ public class Admin {
     public String toString() {
         return "Admin{" +
                 "adminId=" + adminId +
-                ", adminName='" + adminName + '\'' +
+                ", adminNo='" + adminNo + '\'' +
                 ", adminPassword='" + adminPassword + '\'' +
                 '}';
     }
