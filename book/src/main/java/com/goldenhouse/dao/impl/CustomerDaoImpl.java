@@ -18,9 +18,30 @@ public class CustomerDaoImpl implements ICustomerDao {
     @Qualifier("customerMapper")
     private CustomerMapper customerMapper;
 
+    //用户注册
     @Override
     public int registerCustomer(Customer customer) {
 
         return customerMapper.registerCustomer(customer);
+    }
+    //用户登录
+    @Override
+    public Customer customerLogIn(Customer customer) {
+
+        return customerMapper.customerLogIn(customer);
+    }
+
+    //用户找回密码
+    @Override
+    public int findCustomerPassword(Customer customer) {
+
+        return customerMapper.findCustomerPassword(customer);
+    }
+
+    //用户查看个人信息
+    @Override
+    public Customer customerLookInfo(int cId) {
+
+        return customerMapper.customerLookInfo(cId);
     }
 }

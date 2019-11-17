@@ -26,5 +26,38 @@ public class CustomerServiceImpl implements ICustomerService {
 
         return customerDao.registerCustomer(customer);
     }
+
+    /**
+     * 用户登录业务实现
+     * @param customer
+     * @return
+     */
+    @Override
+    public Customer customerLogIn(Customer customer) {
+
+        return customerDao.customerLogIn(customer);
+    }
+
+    /**
+     * 用户找回密码业务实现
+     * @param customer
+     * @return
+     */
+    @Override
+    public int findCustomerPassword(Customer customer) {
+
+        return customerDao.findCustomerPassword(customer);
+    }
+
+    /**
+     * 用户通过cId查看个人信息的业务实现
+     * @param cId 用户Id
+     * @return
+     */
+    @Override
+    public Customer customerLookInfo(int cId) {
+
+        return customerDao.customerLookInfo(cId);
+    }
 }
 

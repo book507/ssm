@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.CustomerMapper">
+    <!--用户注册-->
     <insert id="registerCustomer" parameterType="customer">
             <![CDATA[
                                       insert into
@@ -10,4 +11,49 @@
                                       values(#{cNo},MD5(#{cPwd}))
         ]]>
     </insert>
+    <!--用户登录-->
+    <select id="customerLogIn" parameterType="customer" resultType="customer">
+    <![CDATA[
+                            select
+                                c_id as cId,
+                                c_no as cNo,
+                                c_pwd as cPwd
+                            from
+                                t_cus
+                            where
+                                c_no=#{cNo} and
+                                c_pwd=MD5(#{cPwd})
+
+
+        ]]>
+    </select>
+    <!--用户找回密码-->
+    <update id="findCustomerPassword" parameterType="customer">
+    <![CDATA[
+                            update t_cus
+                            set
+                            c_pwd=MD5(#{cPwd})
+                            where
+                            c_no=#{cNo} and c_sfz=#{cSfz}
+
+        ]]>
+    </update>
+    <!--查看用户个人信息-->
+    <select id="customerLookInfo" parameterType="customer" resultType="customer">
+    <![CDATA[
+                            select
+                                c_no as cNo,
+                                c_sfz as cSfz,
+                                c_name as cName,
+                                c_sex as cSex,
+                                c_tel as cTel,
+                                c_grade as cGrade
+                            from
+                                t_cus
+                            where
+                                c_id=#{cId}
+
+        ]]>
+    </select>
+
 </mapper>
