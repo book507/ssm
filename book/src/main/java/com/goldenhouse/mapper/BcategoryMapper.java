@@ -22,10 +22,10 @@ public interface BcategoryMapper {
 
     /**
      * 根据书籍分类ID修改书籍分类信息
-     * @param bs_id
+     * @param bcategory
      * @return
      */
-    int updateBcategory(int bs_id);
+    int updateBcategory(Bcategory bcategory);
 
     /**
      * 查询所有书籍分类信息

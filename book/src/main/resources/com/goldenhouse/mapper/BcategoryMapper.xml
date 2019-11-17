@@ -26,9 +26,9 @@
     <select id="queryBcategory" resultType="bcategory">
 <![CDATA[
         select
-            bs_id,
-            bs_name,
-            bs_what
+            bs_id as bsId,
+            bs_name as bsName,
+            bs_what as bsWhat
         from
             t_bs
 ]]>

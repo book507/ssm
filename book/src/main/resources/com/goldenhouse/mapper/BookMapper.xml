@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenhouse.mapper.BookMapper">
+    <!-- 查询所有书籍信息-->
+    <select id="queryBook" resultType="book">
+<![CDATA[
+        select
+            b_id as BookId,
+            b_name as BookName,
+            b_price as BookPrice,
+            b_what as BookWhat,
+            bs_id as BsId
+        from
+            t_book
+]]>
+        </select>
+
+    <!-- 增加书籍信息-->
+    <insert id="addBook" parameterType="book">
+        insert t_book(b_name,b_price,b_what,bs_id)  values(#{BookName},#{BookPrice},#{BookWhat},#{BsId})
+    </insert>
+
+    <!-- 根据书籍分类ID删除书籍分类信息-->
+    <delete id="deleteBook" parameterType="int">
+<![CDATA[
+        delete FROM t_book WHERE b_id=#{BookId}
+]]>
+    </delete>
+
+    <!-- 根据书籍ID修改书籍信息-->
+    <update id="updateBook" parameterType="book">
+<![CDATA[
+        update t_book set b_name=#{bookName},b_price=#{bookPrice},b_what=#{bookWhat},bs_id=#{bsId} where b_id=#{BookId}
+]]>
+    </update>
+
+
+</mapper>
