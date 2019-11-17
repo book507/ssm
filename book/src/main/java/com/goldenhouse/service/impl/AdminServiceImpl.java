@@ -1,4 +1,4 @@
-package com.goldenhouse.service.Impl;
+package com.goldenhouse.service.impl;
 
 import com.goldenhouse.dao.AdminDao;
 import com.goldenhouse.entity.Admin;
