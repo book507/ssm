@@ -8,5 +8,5 @@ public interface IAdminDao {
      * @param admin
      * @return
      */
-    int queryAdmin(Admin admin);
+    Admin loginAdmin(Admin admin);
 }

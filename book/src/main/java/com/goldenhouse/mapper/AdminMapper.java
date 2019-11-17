@@ -8,7 +8,6 @@ public interface AdminMapper {
      * @param admin
      * @return
      */
-    int queryAdmin(String adminNo,String adminPassword);
 
-    int queryAdmin(Admin admin);
+    Admin loginAdmin(Admin admin);
 }
