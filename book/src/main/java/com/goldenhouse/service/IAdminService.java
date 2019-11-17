@@ -2,6 +2,6 @@ package com.goldenhouse.service;
 
 import com.goldenhouse.entity.Admin;
 
-public interface AdminService {
+public interface IAdminService {
     int queryAdmin(Admin admin);
 }

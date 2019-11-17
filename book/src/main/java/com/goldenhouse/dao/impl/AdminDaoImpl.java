@@ -1,6 +1,6 @@
 package com.goldenhouse.dao.impl;
 
-import com.goldenhouse.dao.AdminDao;
+import com.goldenhouse.dao.IAdminDao;
 import com.goldenhouse.entity.Admin;
 import com.goldenhouse.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository("adminDao")
-public class AdminDaoImpl implements AdminDao {
+public class AdminDaoImpl implements IAdminDao {
     @Autowired
     @Qualifier("adminMapper")
     private AdminMapper adminMapper;
