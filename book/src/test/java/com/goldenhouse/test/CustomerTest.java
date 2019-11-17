@@ -12,7 +12,6 @@ public class CustomerTest {
 
     @Test
     public void registerCustomerTest(){
-
         ICustomerService customerService=(ICustomerService) context.getBean("customerService");
         Customer customer=new Customer();
         customer.setcNo("123456");
