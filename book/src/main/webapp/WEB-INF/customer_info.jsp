@@ -20,9 +20,9 @@
         <li style="list-style: none">收货地址:${requestScope.customer.cAddress}</li>
         <li style="list-style: none">积分:${requestScope.customer.cGrade}</li>
         <li style="list-style: none">
-            <input type="button" value="修改">
-            <input type="button" value="修改密码">
-            <input type="button" value="返回">
+            <button><a href="/customer/loadInfo?cId=<%=session.getAttribute("userId")%>" style="text-decoration: none">更新信息</a></button>
+            <button><a href="#" style="text-decoration: none">修改密码</a></button>
+            <button><a href="../customer_main.jsp" style="text-decoration: none">返回</a></button>
         </li>
     </ul>
 </body>

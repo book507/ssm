@@ -44,4 +44,11 @@ public class CustomerDaoImpl implements ICustomerDao {
 
         return customerMapper.customerLookInfo(cId);
     }
+
+    //用户更新个人信息
+    @Override
+    public int updateCustomerInfo(Customer customer) {
+
+        return customerMapper.updateCustomerInfo(customer);
+    }
 }

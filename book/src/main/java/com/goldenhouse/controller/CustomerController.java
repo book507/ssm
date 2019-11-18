@@ -4,14 +4,14 @@ import com.goldenhouse.entity.Customer;
 import com.goldenhouse.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
@@ -37,9 +37,9 @@ public class CustomerController {
     public String registerCustomer(Customer customer) {
         int rows = customerService.registerCustomer(customer);
         if (rows > 0) {
-            return "/WEB-INF/customer_register_success.jsp";
+            return "customer_register_success";
         } else {
-            return "/WEB-INF/customer_register_failure.jsp";
+            return "customer_register_failure";
         }
     }
 
@@ -56,11 +56,12 @@ public class CustomerController {
         Customer cus = customerService.customerLogIn(customer);
         session = request.getSession();
         if (cus != null) {
-            session.setAttribute("user", cus);
+            session.setAttribute("userId",cus.getcId());
+            session.setAttribute("username", cus.getcNo());
             model.addAttribute("customer", cus);
-            return "/WEB-INF/customer_main.jsp";
+            return "customer_main";
         } else {
-            return "/WEB-INF/customer_login_failure.jsp";
+            return "customer_login_failure";
         }
     }
 
@@ -74,11 +75,11 @@ public class CustomerController {
     public String findCustomerPassword(Customer customer) {
         int rows = customerService.findCustomerPassword(customer);
         if (rows > 0) {
-            return "/WEB-INF/reset_success.jsp";
+            return "reset_success";
         } else if (rows == 0) {
-            return "/WEB-INF/reset_failure.jsp";
+            return "reset_failure";
         } else {
-            return "/WEB-INF/occur_error.jsp";
+            return "occur_error";
         }
     }
 
@@ -94,11 +95,47 @@ public class CustomerController {
         Customer customer = customerService.customerLookInfo(cId);
         if (customer != null) {
             model.addAttribute("customer", customer);
-            return "/WEB-INF/customer_info.jsp";
+            return "customer_info";
         } else {
-            return "/WEB-INF/occur_error.jsp";
+            return "occur_error";
         }
 
+    }
+
+    /**
+     * 加载用户个人信息功能
+     * @param cId
+     * @param model
+     * @return
+     */
+    @RequestMapping("loadInfo")
+    public String customerloadInfo(int cId, Model model) {
+        Customer customer = customerService.customerLookInfo(cId);
+        if (customer != null) {
+            model.addAttribute("customer", customer);
+            return "customer_update_info";
+        } else {
+            return "occur_error";
+        }
+
+    }
+
+    /**
+     * 用户更新个人信息功能
+     * @param customer
+     * @return
+     */
+    @RequestMapping("updateInfo")
+    public String updateCustomerInfo(Customer customer){
+
+        int rows=customerService.updateCustomerInfo(customer);
+        if (rows > 0) {
+            return "customer_update_info_success";
+        } else if (rows == 0) {
+            return "customer_update_info_failure";
+        } else {
+            return "occur_error";
+        }
     }
 
     /**
@@ -110,6 +147,6 @@ public class CustomerController {
     @RequestMapping("logout")
     public String logout(HttpSession session) throws IOException {
         session.invalidate();
-        return "redirect:/customer_logout_success.jsp";
+        return "redirect:customer_logout_success";
     }
 }

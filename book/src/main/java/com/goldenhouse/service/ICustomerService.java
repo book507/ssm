@@ -34,4 +34,11 @@ public interface ICustomerService {
      * @return
      */
     Customer customerLookInfo(int cId);
+
+    /**
+     * 用户更新个人信息业务
+     * @param customer
+     * @return
+     */
+    int updateCustomerInfo(Customer customer);
 }

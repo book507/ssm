@@ -59,5 +59,16 @@ public class CustomerServiceImpl implements ICustomerService {
 
         return customerDao.customerLookInfo(cId);
     }
+
+    /**
+     * 用户更新个人信息业务的实现
+     * @param customer
+     * @return
+     */
+    @Override
+    public int updateCustomerInfo(Customer customer) {
+
+        return customerDao.updateCustomerInfo(customer);
+    }
 }
 

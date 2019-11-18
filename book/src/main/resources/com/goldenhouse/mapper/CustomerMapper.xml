@@ -47,6 +47,7 @@
                                 c_name as cName,
                                 c_sex as cSex,
                                 c_tel as cTel,
+                                c_address as cAddress,
                                 c_grade as cGrade
                             from
                                 t_cus
@@ -55,5 +56,24 @@
 
         ]]>
     </select>
+
+    <update id="updateCustomerInfo" parameterType="customer" >
+            <![CDATA[
+                            update t_cus
+                            set
+                            c_no=#{cNo},
+                            c_sfz=#{cSfz},
+                            c_name=#{cName},
+                            c_sex=#{cSex},
+                            c_tel=#{cTel},
+                            c_address=#{cAddress},
+                            c_grade=#{cGrade}
+                            where
+                            c_id=#{cId}
+
+        ]]>
+    </update>
+
+
 
 </mapper>

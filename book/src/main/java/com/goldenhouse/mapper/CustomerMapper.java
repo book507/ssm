@@ -31,11 +31,10 @@ public interface CustomerMapper {
      */
     Customer customerLookInfo(int cId);
 
-
     /**
-     * 填写用户信息的Mapper接口
+     * 用户更新个人信息接口
      * @param customer
      * @return
      */
-    //int fillInCustomerInfo(Customer customer);
+    int updateCustomerInfo(Customer customer);
 }

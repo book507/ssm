@@ -35,12 +35,13 @@ public interface ICustomerDao {
      */
     int findCustomerPassword(Customer customer);
 
-
     /**
-     * 填写用户信息
+     * 用户更新个人信息
      * @param customer
      * @return
      */
-    //int fillInCustomerInfo(Customer customer);
+    int updateCustomerInfo(Customer customer);
+
+
 
 }
