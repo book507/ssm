@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenhouse.mapper.ShopMapper">
+    <select id="queryAllShop" parameterType="shop" resultType="shop">
+        select s_id as sId,s_name as sName,s_price as sPrice,s_what as sWhat from t_shop
+    </select>
+</mapper>
