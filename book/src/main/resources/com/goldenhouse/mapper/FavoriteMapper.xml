@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenhouse.mapper.FavoriteMapper">
+    <!--根据收藏夹id删除书本-->
+    <delete id="deleteBookOfFavorite" parameterType="int">
+        <![CDATA[
+           delete from t_fav where f_id=#{fId}
+        ]]>
+    </delete>
+    <!--查看个人所有的收藏夹-->
+    <select id="queryBookOfFavorite" parameterType="int" resultMap="favoriteResultMap1">
+        <![CDATA[
+           select
+           b.b_name,b.b_price,b.b_what,bs_name
+           from
+           t_fav as f,t_cus as c,t_book as b,t_bs as bs
+           where
+           f.c_id=c.c_id and f.b_id=b.b_id and b.bs_id=bs.bs_id
+           and f.c_id=#{cId}
+        ]]>
+    </select>
+    <resultMap id="favoriteResultMap1" type="com.goldenhouse.entity.Favorite">
+        <id property="fId" column="f_id"></id>
+        <association property="customer" javaType="com.goldenhouse.entity.Customer">
+            <id property="cId" column="c_id"></id>
+        </association>
+        <collection property="books" ofType="com.goldenhouse.entity.Book">
+            <id property="bId" column="b_id"></id>
+            <result property="bookName" column="b_name"></result>
+            <result property="bookPrice" column="b_price"></result>
+            <result property="bookWhat" column="b_what"></result>
+            <association property="bcategory" javaType="com.goldenhouse.entity.Bcategory">
+                <id property="bsId" column="bs_id"></id>
+                <result property="bsWhat" column="bs_what"></result>
+            </association>
+        </collection>
+    </resultMap>
+</mapper>
