@@ -25,14 +25,10 @@ public class BcategoryController {
      * @return
      */
     @RequestMapping("addBcategory")
-    public String addBcategory(Bcategory bcategory){
+    public String addBcategory(Bcategory bcategory,Model model){
         int rows=iBcategoryService.addBcategory( bcategory );
-        System.out.println( "rows:"+rows );
-        if (rows==1){
-            return "/WEB-INF/register_success.jsp";
-        }else {
-            return "/WEB-INF/register_fail.jsp";
-        }
+        model.addAttribute( "rows",rows );
+        return "bcategory_add_result";
     }
 
     /**
@@ -55,13 +51,19 @@ public class BcategoryController {
      * @return
      */
     @RequestMapping("deleteBcategory")
-    public String deleteBcategory(int bs_id){
-        int rows=iBcategoryService.deleteBcategory( bs_id );
-        if (rows==1){
-            return "/WEB-INF/register_success.jsp";
-        }else {
-            return "/WEB-INF/register_fail.jsp";
+    public String deleteBcategory(int bs_id,Model model){
+
+        try {
+             iBcategoryService.deleteBcategory( bs_id );
+
+        }catch (Exception e){
+            List<Bcategory> bcategoryList= iBcategoryService.queryBcategory();
+
+            model.addAttribute("bookfl", bcategoryList);
+            model.addAttribute( "key" ,1);
+            return "booksort";
         }
+            return "redirect:queryBcategory";
     }
 
     /**

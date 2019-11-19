@@ -32,4 +32,10 @@ public interface BcategoryMapper {
      * @return
      */
     List<Bcategory> queryBcategory();
+
+    /**
+     * 根据书籍分类ID查询单个书籍分类信息
+     * @return
+     */
+    Bcategory queryBcategoryById();
 }

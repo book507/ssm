@@ -30,18 +30,16 @@
                         操作
                     </th>
                     <th>
-                        <a href="bcategory_add.jsp">添加书籍分类</a>
+                        <a href="/admin/bcategory_add.action">添加书籍分类</a>
                     </th>
                     <th>
-                        <a href="../index.jsp">返回</a>
+                        <a href="/admin/admin_backstage.action">返回</a>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
 
                 <c:forEach items="${bookfl}" var="book">
-
-
                     <tr>
                         <td>
                             <c:out value="${book.getBsId() }"/>
@@ -53,9 +51,9 @@
                             <c:out value="${book.getBsWhat()}"/>
                         </td>
                         <td>
-                            <a href="wait.html">修改</a>
+                            <a href="bcategory_update.action?bs_id=${book.getBsId()}">修改</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="wait.html">删除</a>
+                            <a href="deleteBcategory?bs_id=${book.getBsId()}">删除</a>
                         </td>
                     </tr>
 

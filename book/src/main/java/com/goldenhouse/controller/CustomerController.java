@@ -34,13 +34,10 @@ public class CustomerController {
      * @return
      */
     @RequestMapping("register")
-    public String registerCustomer(Customer customer) {
+    public String registerCustomer(Customer customer,Model model) {
         int rows = customerService.registerCustomer(customer);
-        if (rows > 0) {
-            return "customer_register_success";
-        } else {
-            return "customer_register_failure";
-        }
+        model.addAttribute( "rows",rows );
+        return "customer_result";
     }
 
     /**
@@ -52,14 +49,15 @@ public class CustomerController {
 
     @RequestMapping("login")
     public String customerLogIn(Customer customer, HttpSession session, HttpServletRequest request, Model model) {
-
+        System.out.println( customer.toString() );
         Customer cus = customerService.customerLogIn(customer);
         session = request.getSession();
+        System.out.println( cus );
         if (cus != null) {
             session.setAttribute("userId",cus.getcId());
             session.setAttribute("username", cus.getcNo());
             model.addAttribute("customer", cus);
-            return "customer_main";
+            return "cus_index";
         } else {
             return "customer_login_failure";
         }

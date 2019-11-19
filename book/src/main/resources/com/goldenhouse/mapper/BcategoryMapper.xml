@@ -34,4 +34,18 @@
 ]]>
         </select>
 
+    <!-- 根据书籍分类ID查询单个书籍分类信息-->
+    <select id="queryBcategoryById" resultType="bcategory">
+<![CDATA[
+        select
+            bs_id as bsId,
+            bs_name as bsName,
+            bs_what as bsWhat
+        from
+            t_bs
+        where
+            bs_id=#{bsId}
+]]>
+        </select>
+
 </mapper>

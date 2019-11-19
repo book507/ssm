@@ -30,7 +30,7 @@ public class FavoriteController {
             System.out.println(favorite);
         }
         model.addAttribute("favoriteList",favoriteList);
-        return "queryShop";
+        return "cus_fav";
     }
 
 

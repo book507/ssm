@@ -11,6 +11,6 @@
     <title>登录结果</title>
 </head>
 <body>
-用户名不存在或密码错误！请重新<a href="/customer_login.jsp">登陆</a>
+用户名不存在或密码错误！请重新<a href="/index.jsp">登陆</a>
 </body>
 </html>

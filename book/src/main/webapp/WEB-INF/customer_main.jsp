@@ -17,6 +17,8 @@
 </head>
 <body>
 
-第<%=session.getAttribute("userId")%>号,<%=session.getAttribute("username")%>&nbsp;登录成功&nbsp;&nbsp;&nbsp;&nbsp;<a href="/customer/lookInfo?cId=<%=session.getAttribute("userId")%>">个人中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="/customer/logout" onclick="logOutTip()">退出登录</a>
+第<%=session.getAttribute("userId")%>号,<%=session.getAttribute("username")%>&nbsp;
+登录成功&nbsp;&nbsp;&nbsp;&nbsp;<a href="/customer/lookInfo?cId=<%=session.getAttribute("userId")%>">
+    个人中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<a  href="/customer/logout" onclick="logOutTip()">退出登录</a>
 </body>
 </html>

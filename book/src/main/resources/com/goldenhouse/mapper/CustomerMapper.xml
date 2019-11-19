@@ -7,8 +7,8 @@
     <insert id="registerCustomer" parameterType="customer">
             <![CDATA[
                                       insert into
-                                      t_cus(c_no,c_pwd)
-                                      values(#{cNo},MD5(#{cPwd}))
+                                      t_cus(c_no,c_pwd,c_sfz)
+                                      values(#{cNo},MD5(#{cPwd}),#{cSfz})
         ]]>
     </insert>
     <!--用户登录-->
