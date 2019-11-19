@@ -9,13 +9,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>书籍分类添加结果页面</title>
+    <title>书籍分类修改结果页面</title>
 </head>
 <body>
 <c:choose>
     <c:when test="${rows==1}">
-        添加成功<a href="/admin/bcategory_add.action">继续添加</a>
-        <a href="/bcategory/queryBcategory">查看书籍分类</a>
+        修改成功<a href="/bcategory/queryBcategory">查看书籍分类</a>
     </c:when>
     <c:otherwise>
         服务器异常

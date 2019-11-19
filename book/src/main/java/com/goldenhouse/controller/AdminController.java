@@ -62,17 +62,7 @@ public class AdminController {
         return forword;
     }
 
-    /**
-     * 跳转到书籍分类修改页面
-     * @return
-     */
-    @RequestMapping("/bcategory_update.action")
-    public String adminBcategoryUpdate(int bs_id,Model model ){
-        Bcategory bcategory;
-       // model.addAttribute("bcategory",bcategory);
-        String forword="changbooksort";
-        return forword;
-    }
+
 
 
 }

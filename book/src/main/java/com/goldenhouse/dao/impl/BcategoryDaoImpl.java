@@ -58,8 +58,15 @@ public class BcategoryDaoImpl implements IBcategoryDao {
 
     /**
      * 根据书籍分类ID查询单个书籍分类信息
+     * @param bsId
      * @return
      */
+    @Override
+    public Bcategory queryBcategoryById(int bsId) {
+        return bcategoryMapper.queryBcategoryById( bsId );
+    }
+
+
 
 
 }

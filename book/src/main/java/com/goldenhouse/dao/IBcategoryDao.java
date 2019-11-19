@@ -20,10 +20,10 @@ public interface IBcategoryDao {
 
     /**
      * 根据书籍分类ID删除书籍分类信息
-     * @param bs_id
+     * @param bsId
      * @return
      */
-    int deleteBcategory(int bs_id);
+    int deleteBcategory(int bsId);
 
     /**
      * 根据书籍分类ID修改书籍分类信息
@@ -34,7 +34,8 @@ public interface IBcategoryDao {
 
     /**
      * 根据书籍分类ID查询单个书籍分类信息
+     * @param bsId
      * @return
      */
-
+    Bcategory queryBcategoryById(int bsId);
 }

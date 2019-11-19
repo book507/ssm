@@ -11,6 +11,17 @@
     <meta charset="UTF-8">
     <title>修改书籍分类</title>
 </head>
+<script type="text/javascript">
+    function yz(){
+        if(document.form.bsName.value==""){
+            alert("书籍类名不能为空！");
+            return false;}
+        if(document.form.bsWhat.value==""){
+            alert("请编辑书籍分类说明！");
+            return false;}
+    }
+</script>
+
 <style>
     .basic-grey {
         margin-left:auto;
@@ -85,22 +96,26 @@
 </style>
 <body style="background: url(../images/t5.jpg) ; background-size:100% 100% ; background-attachment: fixed">
 
-<form action="" method="post" class="basic-grey">
+<form name="form" action="bcategory_update" method="post" class="basic-grey">
     <h1 align="center">修改书籍分类
     </h1>
     <p align="center">
+        书类ID  ：<input id="bookid" type="text" name="bsId" readonly="readonly" value="${requestScope.bcategory.bsId}"  />
+    </p>
 
-        <input id="bookname" type="text" name="cName" placeholder="请输入书籍分类名" />
+    <p align="center">
+
+        书籍类名：<input id="bookname" type="text" name="bsName" value="${requestScope.bcategory.bsName}"  />
     </p>
     <p align="center">
 
-        <input id="bookprice" type="text" name="cSex" placeholder="请输入书籍分类说明" />
+        分类说明：<input id="bookprice" type="text" name="bsWhat" value="${requestScope.bcategory.bsWhat}"  />
     </p>
 
 
 
     <p align="center">
-        <input type="button" class="button" value="确认修改" onclick="window.location.href='booksort.jsp'"/>
+        <input type="submit" class="button" value="确认修改" onclick="yz"/>
     </p>
 </form>
 </body>

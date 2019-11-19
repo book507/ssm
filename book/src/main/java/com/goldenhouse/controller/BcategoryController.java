@@ -67,13 +67,29 @@ public class BcategoryController {
     }
 
     /**
+     * 跳转到书籍分类修改页面
+     * @return
+     */
+    @RequestMapping("/bcategory_update.action")
+    public String adminBcategoryUpdate(int bs_id,Model model ){
+        Bcategory bcategory=iBcategoryService.queryBcategoryById( bs_id );
+        model.addAttribute("bcategory",bcategory);
+        String forword="changebooksort";
+        return forword;
+    }
+
+
+    /**
      * 根据书籍分类ID修改书籍分类信息
      * @param bcategory
      * @return
      */
-    public int updateBcategory(Bcategory bcategory){
+    @RequestMapping("bcategory_update")
+    public String bcategoryUpdate(Bcategory bcategory,Model model){
         int rows=iBcategoryService.updateBcategory( bcategory );
-        return rows;
+        System.out.println( "**************************************"+rows );
+        model.addAttribute( "rows",rows );
+        return "bcategory_update_result";
     }
 
 }

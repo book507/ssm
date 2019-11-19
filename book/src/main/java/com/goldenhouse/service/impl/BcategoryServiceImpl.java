@@ -53,4 +53,14 @@ public class BcategoryServiceImpl implements IBcategoryService {
     public int updateBcategory(Bcategory bcategory) {
         return bcategoryDao.updateBcategory( bcategory );
     }
+
+    /**
+     * 根据书籍分类ID查询单个书籍分类信息
+     * @param bsId
+     * @return
+     */
+    @Override
+    public Bcategory queryBcategoryById(int bsId) {
+        return bcategoryDao.queryBcategoryById( bsId );
+    }
 }
