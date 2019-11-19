@@ -21,12 +21,12 @@ public class AdminController {
          * 管理员登录
          */
         @RequestMapping("Login")
-        @ResponseBody
         public String adminLogin(Admin admin, Model model) {
             Admin admin1=IAdminService.loginAdmin( admin );
             if (admin1 != null) {
-                model.addAttribute("admin", admin1);
-                return "register_success";
+                model.addAttribute("admin", admin1.getAdminId());
+
+                return "admin_backstage";
             } else {
                 return "register_fail";
             }

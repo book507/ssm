@@ -5,8 +5,10 @@ import com.goldenhouse.service.IBcategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -38,11 +40,13 @@ public class BcategoryController {
      * @return
      */
     @RequestMapping("queryBcategory")
-    public void queryBcategory(){
+    public String queryBcategory(Model model, HttpServletRequest request){
         List<Bcategory> bcategoryList= iBcategoryService.queryBcategory();
-        for (Bcategory bcategory:bcategoryList){
-            System.out.println(bcategory);
-        }
+        String forword="booksort";
+
+        model.addAttribute("bookfl", bcategoryList);
+        request.setAttribute("bookfl", bcategoryList);
+        return forword;
     }
 
     /**
