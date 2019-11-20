@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class ShopController {
     public String addShop(Shop shop,Model model){
         int rows=shopService.addShop( shop );
         model.addAttribute( "rows",rows );
-        return "bcategory_add_result";
+        return "shop_add_result";
     }
 
     /**
@@ -73,6 +74,43 @@ public class ShopController {
     public String shopAction(){
         String forword="shop";
         return forword;
+    }
+
+    /**
+     * 管理员查询所有积分商品
+     * @return
+     */
+    @RequestMapping("queryShop")
+    public String queryBcategory(Model model, HttpServletRequest request){
+        String forword="shop";
+        List<Shop> shopList= shopService.queryAllShop();
+        model.addAttribute("shopList", shopList);
+        request.setAttribute("shopList", shopList);
+        return forword;
+    }
+
+    /**
+     * 管理员操作跳转到积分商品修改页面
+     * @return
+     */
+    @RequestMapping("/shop_update.action")
+    public String shopUpdate(int sId,Model model ){
+        Shop shop=shopService.queryShopById( sId );
+        model.addAttribute("shop",shop);
+        String forword="shop_update";
+        return forword;
+    }
+
+    /**
+     * 管理员根据积分商品ID修改积分商品信息
+     * @param shop
+     * @return
+     */
+    @RequestMapping("shop_update")
+    public String shopUpdate(Shop shop,Model model){
+        int rows=shopService.updateShop( shop );
+        model.addAttribute( "rows",rows );
+        return "shop_update_result";
     }
 
 

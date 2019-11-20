@@ -1,5 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: ZZL
@@ -11,8 +9,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>添加商品</title>
+    <title>修改积分商品信息</title>
 </head>
+
 <style>
     .basic-grey {
         margin-left:auto;
@@ -87,26 +86,30 @@
 </style>
 <body style="background: url(../images/t5.jpg) ; background-size:100% 100% ; background-attachment: fixed">
 
-<form action="/shop/addShop" method="post" class="basic-grey">
-    <h1 align="center">添加商品
+<form name="form" action="shop_update" method="post" class="basic-grey">
+    <h1 align="center">修改积分商品
     </h1>
     <p align="center">
-
-        <input id="sName" type="text" name="sName" placeholder="请输入商品名称" required="required"/>
-    </p>
-    <p align="center">
-
-        <input id="sPrice" type="text" name="sPrice" placeholder="请输入商品价格" required="required"/>
+        商品ID  ：<input id="bid" type="text" name="sId" readonly="readonly" value="${requestScope.shop.sId}"  />
     </p>
 
     <p align="center">
 
-        <input id="sWhat" type="text" name="sWhat" placeholder="请输入商品介绍" required="required"/>
+        商品名称：<input id="bname" type="text" name="sName" value="${requestScope.shop.sName}" required="required" />
+    </p>
+    <p align="center">
+
+        商品价格：<input id="bprice" type="text" name="sPrice" value="${requestScope.shop.sPrice}"  required="required"/>
+    </p>
+    <p align="center">
+
+        商品描述：<input id="bwhat" type="text" name="sWhat" value="${requestScope.shop.sWhat}"  required="required"/>
     </p>
 
 
+
     <p align="center">
-        <input type="submit" class="button" value="确认添加" />
+        <input type="submit" class="button" value="确认修改" />
     </p>
 </form>
 </body>

@@ -36,27 +36,30 @@
                         <a href="/shop/shop_add.action">添加商品</a>
                     </th>
                     <th>
-                        <a href="/shop/shop.action">返回</a>
+                        <a href="/admin/admin_backstage.action">返回</a>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <c:forEach items="${bookfl}" var="book">
+                <c:forEach items="${shopList}" var="shop">
                     <tr>
                         <td>
-                            <c:out value="${book.getBsId() }"/>
+                            <c:out value="${shop.getsId() }"/>
                         </td>
                         <td>
-                            <c:out value="${book.getBsName()}"/>
+                            <c:out value="${shop.getsName()}"/>
                         </td>
                         <td>
-                            <c:out value="${book.getBsWhat()}"/>
+                            <c:out value="${shop.getsPrice()}"/>
                         </td>
                         <td>
-                            <a href="bcategory_update.action?bs_id=${book.getBsId()}">修改</a>
+                            <c:out value="${shop.getsWhat()}"/>
+                        </td>
+                        <td>
+                            <a href="shop_update.action?sId=${shop.getsId()}">修改</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="deleteBcategory?bs_id=${book.getBsId()}">删除</a>
+                            <a href="deleteShop?sId=${shop.getsId()}">删除</a>
                         </td>
                     </tr>
 

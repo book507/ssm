@@ -34,4 +34,24 @@ public class ShopDaoImpl implements IShopDao {
     public int addShop(Shop shop) {
         return shopMapper.addShop( shop );
     }
+
+    /**
+     * 根据商品ID查询单个商品信息
+     * @param sId
+     * @return
+     */
+    @Override
+    public Shop queryShopById(int sId) {
+        return shopMapper.queryShopById( sId );
+    }
+
+    /**
+     * 修改积分商品信息
+     * @param shop
+     * @return
+     */
+    @Override
+    public int updateShop(Shop shop) {
+        return shopMapper.updateShop( shop );
+    }
 }

@@ -23,7 +23,7 @@
     <!-- 根据积分商品ID修改积分商品信息-->
     <update id="updateShop" parameterType="shop">
 <![CDATA[
-        update t_shop set s_name=#{bsName},s_price=#{sPrice},bs_what=#{bsWhat} where bs_id=#{bsId}
+        update t_shop set s_name=#{sName},s_price=#{sPrice},s_what=#{sWhat} where s_id=#{sId}
 ]]>
     </update>
 

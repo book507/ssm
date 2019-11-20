@@ -33,4 +33,24 @@ public class ShopServiceImpl implements IShopService {
     public int addShop(Shop shop) {
         return shopDao.addShop( shop );
     }
+
+    /**
+     * 根据商品ID查询单个商品信息
+     * @param sId
+     * @return
+     */
+    @Override
+    public Shop queryShopById(int sId) {
+        return shopDao.queryShopById( sId );
+    }
+
+    /**
+     * 修改积分商品信息
+     * @param shop
+     * @return
+     */
+    @Override
+    public int updateShop(Shop shop) {
+        return shopDao.updateShop( shop );
+    }
 }
