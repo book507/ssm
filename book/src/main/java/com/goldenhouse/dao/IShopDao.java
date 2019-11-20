@@ -10,4 +10,11 @@ public interface IShopDao {
      * @return
      */
     List<Shop> queryAllShop();
+
+    /**
+     * 增加积分商品信息
+     * @param shop
+     * @return
+     */
+    int addShop(Shop shop);
 }

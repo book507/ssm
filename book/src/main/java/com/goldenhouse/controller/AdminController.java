@@ -32,35 +32,19 @@ public class AdminController {
             }
         }
 
-    /**
-     * 跳转到书籍分类页面
-     * @return
-     */
-    @RequestMapping("/bcategory.action")
-    public String bcategoryAction(){
-        String forword="booksort";
-        return forword;
-    }
 
-    /**
-     * 跳转到管理员后台主页面
-     * @return
-     */
-    @RequestMapping("/admin_backstage.action")
-    public String adminBackstage(){
-        String forword="admin_backstage";
-        return forword;
-    }
 
-    /**
-     * 跳转到书籍分类增加页面
-     * @return
-     */
-    @RequestMapping("/bcategory_add.action")
-    public String adminBcategoryAdd(){
-        String forword="bcategory_add";
-        return forword;
-    }
+        /**
+         * 跳转到管理员后台主页面
+         * @return
+         */
+        @RequestMapping("/admin_backstage.action")
+        public String adminBackstage(){
+            String forword="admin_backstage";
+            return forword;
+        }
+
+
 
 
 

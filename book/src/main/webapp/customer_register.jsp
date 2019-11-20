@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>注册页面</title>
+    <title>用户注册</title>
     <script type="text/javascript">
         /*判断密码是否一致*/
         function formCheck(){

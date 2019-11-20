@@ -45,7 +45,7 @@
 <table>
     <tr valign="top">
         <div class="center-block" style="text-align: center;padding-top:10px ;">
-            <button type="button" class="btn btn-primary button01" onclick="window.location.href='shop.jsp'">积分商城</button>
+            <button type="button" class="btn btn-primary button01" onclick="window.location.href='/shop/shop.action'">积分商城</button>
             <button type="button" class="btn btn-danger button01"
                     onclick="window.location.href='mailbox.jsp'">小屋信箱
             </button>

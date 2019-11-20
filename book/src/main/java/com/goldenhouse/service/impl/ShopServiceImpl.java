@@ -23,4 +23,14 @@ public class ShopServiceImpl implements IShopService {
     public List<Shop> queryAllShop() {
         return shopDao.queryAllShop();
     }
+
+    /**
+     * 增加积分商品信息
+     * @param shop
+     * @return
+     */
+    @Override
+    public int addShop(Shop shop) {
+        return shopDao.addShop( shop );
+    }
 }

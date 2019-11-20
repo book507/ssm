@@ -2,6 +2,9 @@ package com.goldenhouse.entity;
 
 import org.apache.ibatis.type.Alias;
 
+/**
+ * 管理员账号实体类
+ */
 @Alias("admin")
 public class Admin {
     //管理员ID

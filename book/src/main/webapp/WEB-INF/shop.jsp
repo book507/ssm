@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title></title>
+    <title>积分商品增加</title>
 </head>
 <body>
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
@@ -18,22 +18,25 @@
                 <tr>
 
                     <th>
-                        书籍分类ID
+                        商品ID
                     </th>
                     <th>
-                        书籍分类名
+                        商品名称
                     </th>
                     <th>
-                        书籍分类说明
+                        商品价格
+                    </th>
+                    <th>
+                        商品介绍
                     </th>
                     <th>
                         操作
                     </th>
                     <th>
-                        <a href="/bcategory/bcategory_add.action">添加书籍分类</a>
+                        <a href="/shop/shop_add.action">添加商品</a>
                     </th>
                     <th>
-                        <a href="/admin/admin_backstage.action">返回</a>
+                        <a href="/shop/shop.action">返回</a>
                     </th>
                 </tr>
                 </thead>

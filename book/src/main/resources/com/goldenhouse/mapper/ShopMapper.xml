@@ -3,7 +3,43 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.ShopMapper">
+    <!--查询所有的积分商品信息-->
     <select id="queryAllShop" parameterType="shop" resultType="shop">
         select s_id as sId,s_name as sName,s_price as sPrice,s_what as sWhat from t_shop
     </select>
+
+    <!-- 增加积分商品-->
+    <insert id="addShop" parameterType="shop">
+        insert t_shop(s_name,s_price,s_what)  values(#{sName},#{sPrice},#{sWhat})
+    </insert>
+
+    <!-- 根据积分商品ID删除积分商品信息-->
+    <delete id="deleteShop" parameterType="int">
+<![CDATA[
+        delete FROM t_shop WHERE s_id=#{sId}
+]]>
+    </delete>
+
+    <!-- 根据积分商品ID修改积分商品信息-->
+    <update id="updateShop" parameterType="shop">
+<![CDATA[
+        update t_shop set s_name=#{bsName},s_price=#{sPrice},bs_what=#{bsWhat} where bs_id=#{bsId}
+]]>
+    </update>
+
+    <!-- 根据积分商品ID查询单个积分商品信息-->
+    <select id="queryShopById" resultType="shop">
+<![CDATA[
+        select
+            s_id as sId,
+            s_name as sName,
+            s_price as sPrice,
+            s_what as sWhat
+        from
+            t_shop
+        where
+            s_id=#{sId}
+]]>
+        </select>
+
 </mapper>

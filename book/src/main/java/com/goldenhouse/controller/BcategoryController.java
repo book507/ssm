@@ -55,7 +55,6 @@ public class BcategoryController {
 
         try {
              iBcategoryService.deleteBcategory( bs_id );
-
         }catch (Exception e){
             List<Bcategory> bcategoryList= iBcategoryService.queryBcategory();
 
@@ -74,10 +73,9 @@ public class BcategoryController {
     public String adminBcategoryUpdate(int bs_id,Model model ){
         Bcategory bcategory=iBcategoryService.queryBcategoryById( bs_id );
         model.addAttribute("bcategory",bcategory);
-        String forword="changebooksort";
+        String forword="bcategory_update";
         return forword;
     }
-
 
     /**
      * 根据书籍分类ID修改书籍分类信息
@@ -90,6 +88,26 @@ public class BcategoryController {
         System.out.println( "**************************************"+rows );
         model.addAttribute( "rows",rows );
         return "bcategory_update_result";
+    }
+
+    /**
+     * 跳转到书籍分类页面
+     * @return
+     */
+    @RequestMapping("/bcategory.action")
+    public String bcategoryAction(){
+        String forword="booksort";
+        return forword;
+    }
+
+    /**
+     * 跳转到书籍分类增加页面
+     * @return
+     */
+    @RequestMapping("/bcategory_add.action")
+    public String adminBcategoryAdd(){
+        String forword="bcategory_add";
+        return forword;
     }
 
 }

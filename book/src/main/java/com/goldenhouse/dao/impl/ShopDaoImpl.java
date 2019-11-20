@@ -15,8 +15,23 @@ public class ShopDaoImpl implements IShopDao {
     @Autowired
     @Qualifier("shopMapper")
     private ShopMapper shopMapper;
+
+    /**
+     * 查看所有商品列表
+     * @return
+     */
     @Override
     public List<Shop> queryAllShop() {
         return shopMapper.queryAllShop();
+    }
+
+    /**
+     * 增加积分商品信息
+     * @param shop
+     * @return
+     */
+    @Override
+    public int addShop(Shop shop) {
+        return shopMapper.addShop( shop );
     }
 }

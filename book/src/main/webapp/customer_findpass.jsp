@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>找回密码界面</title>
+    <title>找回密码</title>
     <script type="text/javascript">
         /*判断密码是否一致*/
         function formCheck(){

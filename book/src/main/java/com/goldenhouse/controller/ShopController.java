@@ -34,4 +34,38 @@ public class ShopController {
         model.addAttribute("shopList",shopList);
         return "queryShop";
     }
+
+    /**
+     * 添加积分商品
+     * @param shop
+     * @return
+     */
+    @RequestMapping("addShop")
+    public String addShop(Shop shop,Model model){
+        int rows=shopService.addShop( shop );
+        model.addAttribute( "rows",rows );
+        return "bcategory_add_result";
+    }
+
+    /**
+     * 跳转到积分商品增加页面
+     * @return
+     */
+    @RequestMapping("/shop_add.action")
+    public String adminBcategoryAdd(){
+        String forword="shop_add";
+        return forword;
+    }
+
+    /**
+     * 跳转到积分商品页面
+     * @return
+     */
+    @RequestMapping("/shop.action")
+    public String shopAction(){
+        String forword="shop";
+        return forword;
+    }
+
+
 }
