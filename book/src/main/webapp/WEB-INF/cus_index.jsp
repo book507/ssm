@@ -37,7 +37,7 @@
             <a href="/customer/lookInfo?cId=<%=session.getAttribute("userId")%>">个人中心</a></li>
             <li><a href="/favorite/queryBook?cId=<%=session.getAttribute("userId")%>">收藏夹</a></li>
             <li><a href="cus_gwc.jsp">购物车</a></li>
-            <li><a href="cus_shop.jsp">积分商城</a></li>
+            <li><a href="/shop/queryAll">积分商城</a></li>
             <li><a href="cus_order.jsp">我的订单</a></li>
             <li><a href="cus_suggest.jsp">意见反馈</a></li>
             <a href="#" onclick="sure()">退出登录</a>

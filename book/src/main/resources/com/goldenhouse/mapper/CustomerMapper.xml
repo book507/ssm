@@ -42,6 +42,7 @@
     <select id="customerLookInfo" parameterType="customer" resultType="customer">
     <![CDATA[
                             select
+                                c_id as cId,
                                 c_no as cNo,
                                 c_sfz as cSfz,
                                 c_name as cName,
@@ -62,12 +63,10 @@
                             update t_cus
                             set
                             c_no=#{cNo},
-                            c_sfz=#{cSfz},
                             c_name=#{cName},
                             c_sex=#{cSex},
                             c_tel=#{cTel},
-                            c_address=#{cAddress},
-                            c_grade=#{cGrade}
+                            c_address=#{cAddress}
                             where
                             c_id=#{cId}
 

@@ -25,7 +25,6 @@ public class AdminController {
             Admin admin1=IAdminService.loginAdmin( admin );
             if (admin1 != null) {
                 model.addAttribute("admin", admin1.getAdminId());
-
                 return "admin_backstage";
             } else {
                 return "customer_login_failure";
@@ -43,7 +42,6 @@ public class AdminController {
             String forword="admin_backstage";
             return forword;
         }
-
 
 
 

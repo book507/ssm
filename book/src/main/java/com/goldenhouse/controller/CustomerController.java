@@ -93,7 +93,7 @@ public class CustomerController {
         Customer customer = customerService.customerLookInfo(cId);
         if (customer != null) {
             model.addAttribute("customer", customer);
-            return "customer_info";
+            return "cus_info";
         } else {
             return "occur_error";
         }
@@ -111,7 +111,7 @@ public class CustomerController {
         Customer customer = customerService.customerLookInfo(cId);
         if (customer != null) {
             model.addAttribute("customer", customer);
-            return "customer_update_info";
+            return "cus_editinfo";
         } else {
             return "occur_error";
         }

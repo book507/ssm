@@ -21,17 +21,17 @@
            and f.c_id=#{cId}
         ]]>
     </select>
-    <resultMap id="favoriteResultMap1" type="com.goldenhouse.entity.Favorite">
+    <resultMap id="favoriteResultMap1" type="favorite">
         <id property="fId" column="f_id"></id>
-        <association property="customer" javaType="com.goldenhouse.entity.Customer">
+        <association property="customer" javaType="customer">
             <id property="cId" column="c_id"></id>
         </association>
-        <collection property="books" ofType="com.goldenhouse.entity.Book">
+        <collection property="books" ofType="book">
             <id property="bId" column="b_id"></id>
             <result property="bookName" column="b_name"></result>
             <result property="bookPrice" column="b_price"></result>
             <result property="bookWhat" column="b_what"></result>
-            <association property="bcategory" javaType="com.goldenhouse.entity.Bcategory">
+            <association property="bcategory" javaType="bcategory">
                 <id property="bsId" column="bs_id"></id>
                 <result property="bsWhat" column="bs_what"></result>
             </association>

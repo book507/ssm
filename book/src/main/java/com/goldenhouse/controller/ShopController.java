@@ -32,9 +32,17 @@ public class ShopController {
             System.out.println(shop);
         }
         model.addAttribute("shopList",shopList);
-        return "queryShop";
+        return "cus_shop";
     }
 
+    /**
+     * 返回用户个人主页面
+     * @return
+     */
+    @RequestMapping("returnIndex")
+    public String returnCusIndex(){
+        return "cus_index";
+    }
     /**
      * 添加积分商品
      * @param shop
