@@ -4,12 +4,15 @@ import com.goldenhouse.entity.Sug;
 import com.goldenhouse.service.ISugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Controller
+@RequestMapping("sug")
 public class SugController {
 
     @Autowired
@@ -22,10 +25,10 @@ public class SugController {
      */
     @RequestMapping("queryAllSug")
     public String queryAllSug(Model model, HttpServletRequest request){
-        String forword="sug";
+        String forword="mailbox";
         List<Sug> sugList= iSugService.queryAllSug();
-        model.addAttribute("bookfl", sugList);
-        request.setAttribute("bookfl", sugList);
+        model.addAttribute("sugList", sugList);
+        request.setAttribute("sugList", sugList);
         return forword;
     }
 
@@ -34,9 +37,9 @@ public class SugController {
      * @return
      */
     @RequestMapping("deleteSug")
-    public String deleteBcategory(int sugId,Model model){
+    public String deleteSug(int sugId,Model model){
         int rows=iSugService.deleteSug( sugId );
         model.addAttribute("rows", rows);
-        return "redirect:queryBcategory";
+        return "redirect:queryAllSug";
     }
 }
