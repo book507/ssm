@@ -3,6 +3,7 @@ package com.goldenhouse.mapper;
 import com.goldenhouse.entity.Favorite;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 收藏夹mapper接口
@@ -20,6 +21,6 @@ public interface FavoriteMapper {
      * @param cId
      * @return
      */
-    List<Favorite> queryBookOfFavorite(int cId);
+    List<Map<String,Object>> queryBookOfFavorite(int cId);
 
 }

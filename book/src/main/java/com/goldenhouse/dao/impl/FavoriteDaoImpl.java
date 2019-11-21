@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository("favoriteDao")
 public class FavoriteDaoImpl implements IFavoriteDao {
@@ -30,7 +31,7 @@ public class FavoriteDaoImpl implements IFavoriteDao {
      * @return
      */
     @Override
-    public List<Favorite> queryBookOfFavorite(int cId) {
+    public List<Map<String,Object>> queryBookOfFavorite(int cId) {
         return favoriteMapper.queryBookOfFavorite(cId);
     }
 

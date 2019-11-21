@@ -93,27 +93,27 @@
         <input id="cId" type="hidden" name="cId"  value="${requestScope.customer.cId}" />
     </p>
     <p align="center">
-
+        登录用户名：
         <input id="cNo" type="text" name="cNo" placeholder="请输入用户名" value="${requestScope.customer.cNo}" />
     </p>
 
     <p align="center">
-
+        您的姓名：
         <input id="cName" type="text" name="cName" placeholder="请输入您的姓名" value="${requestScope.customer.cName}" />
     </p>
 
     <p align="center">
-
+         您的性别：
         <input id="cSex" type="text" name="cSex" placeholder="请输入您的性别" value="${requestScope.customer.cSex}" />
     </p>
 
     <p align="center">
-
+        联系方式：
         <input id="cTel" type="text" name="cTel" placeholder="请输入您的联系方式" value="${requestScope.customer.cTel}" />
     </p>
 
     <p align="center">
-
+       收货地址：
         <input id="cAddress" type="text" name="cAddress" placeholder="请输入您的收货地址" value="${requestScope.customer.cAddress}" />
     </p>
 

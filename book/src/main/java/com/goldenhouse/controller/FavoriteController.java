@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("favorite")
@@ -25,11 +26,9 @@ public class FavoriteController {
      */
     @RequestMapping("queryBook")
     public String queryBookOfFavorite(int cId, Model model){
-        List<Favorite> favoriteList=favoriteService.queryBookOfFavorite(cId);
-        for (Favorite favorite:favoriteList){
-            System.out.println(favorite);
-        }
-        model.addAttribute("favoriteList",favoriteList);
+        List<Map<String,Object>> mapList=favoriteService.queryBookOfFavorite(cId);
+        System.out.println(mapList);
+        model.addAttribute("mapList",mapList);
         return "cus_fav";
     }
 
