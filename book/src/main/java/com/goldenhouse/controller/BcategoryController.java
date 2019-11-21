@@ -54,11 +54,12 @@ public class BcategoryController {
     public String deleteBcategory(int bs_id,Model model){
         try {
              iBcategoryService.deleteBcategory( bs_id );
+            model.addAttribute( "key" ,-10);
         }catch (Exception e){
             List<Bcategory> bcategoryList= iBcategoryService.queryBcategory();
 
-            model.addAttribute("bookfl", bcategoryList);
-            model.addAttribute( "key" ,1);
+           model.addAttribute("bookfl", bcategoryList);
+            model.addAttribute( "key" ,10);
             return "booksort";
         }
             return "redirect:queryBcategory";

@@ -31,8 +31,6 @@ public class AdminController {
             }
         }
 
-
-
         /**
          * 跳转到管理员后台主页面
          * @return
@@ -42,10 +40,6 @@ public class AdminController {
             String forword="admin_backstage";
             return forword;
         }
-
-
-
-
 
 }
 

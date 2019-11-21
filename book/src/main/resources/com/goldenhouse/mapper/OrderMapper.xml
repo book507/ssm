@@ -5,8 +5,24 @@
 <mapper namespace="com.goldenhouse.mapper.OrderMapper">
     <!-- 查询所有订单信息-->
     <select id="queryOrder" resultType="order">
-
+        select
+            o_id as oId,
+            o_no as oNo,
+            c_id as cId,
+            b_id as bId,
+            o_sta as oSta
+        from
+            t_order
         </select>
+
+    <!-- 根据订单ID删除订单信息-->
+    <delete id="deleteOrder" parameterType="int">
+<![CDATA[
+        delete FROM t_order WHERE o_id=#{oId}
+]]>
+    </delete>
+
+
 
 
 </mapper>

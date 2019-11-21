@@ -34,4 +34,14 @@ public class SugServiceImpl implements ISugService {
     public List<Sug> queryAllSug() {
         return iSugDao.queryAllSug();
     }
+
+    /**
+     * 增加意见
+     * @param sug
+     * @return
+     */
+    @Override
+    public int addSug(Sug sug) {
+        return iSugDao.addSug( sug );
+    }
 }

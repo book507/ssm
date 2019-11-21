@@ -16,6 +16,7 @@
             return false;
         }
     </script>
+
 </head>
 <body>
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
@@ -51,6 +52,11 @@
                 <tbody>
 
                 <c:forEach items="${bookfl}" var="book">
+                    <c:if test="${key==10}">
+                        <script type="text/javascript" language="javascript">
+                            alert("该书籍分类下还有书籍信息，不能删除");
+                        </script>
+                    </c:if>
                     <tr>
                         <td>
                             <c:out value="${book.getBsId() }"/>
@@ -64,7 +70,7 @@
                         <td>
                             <a href="bcategory_update.action?bs_id=${book.getBsId()}">修改</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="deleteBcategory?bs_id=${book.getBsId()} " onclick="return sure();">删除</a>
+                            <a href="deleteBcategory?bs_id=${book.getBsId()} " onclick="sure();">删除</a>
                         </td>
                     </tr>
 

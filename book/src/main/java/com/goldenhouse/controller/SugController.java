@@ -20,7 +20,7 @@ public class SugController {
     private ISugService iSugService ;
 
     /**
-     * 查询所有意见信息
+     * 管理员查询所有意见信息
      * @return
      */
     @RequestMapping("queryAllSug")
@@ -33,7 +33,7 @@ public class SugController {
     }
 
     /**
-     *  根据意见ID删除该意见信息
+     *  管理员根据意见ID删除该意见信息
      * @return
      */
     @RequestMapping("deleteSug")
@@ -42,4 +42,27 @@ public class SugController {
         model.addAttribute("rows", rows);
         return "redirect:queryAllSug";
     }
+
+    /**
+     * 用户添加意见信息
+     * @param sug
+     * @return
+     */
+    @RequestMapping("addSug")
+    public String addSug(Sug sug,Model model){
+        int rows=iSugService.addSug( sug );
+        model.addAttribute( "rows",rows );
+        return "sug_add_result";
+    }
+
+    /**
+     * 用户跳转到添加意见页面
+     * @return
+     */
+    @RequestMapping("/cus_sug.action")
+    public String cusSugAction(){
+        String forword="cus_suggest";
+        return forword;
+    }
+
 }

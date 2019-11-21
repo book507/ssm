@@ -17,4 +17,10 @@
         delete from t_sug where sug_id=#{sugId}
     </delete>
 
+    <!-- 增加意见-->
+    <insert id="addSug" parameterType="sug">
+        insert t_sug(c_id,sug_what,sug_time)  values(#{cId},#{sugWhat},#{sugTime})
+    </insert>
+
+
 </mapper>

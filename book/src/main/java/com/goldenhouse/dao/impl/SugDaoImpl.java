@@ -34,4 +34,14 @@ public class SugDaoImpl implements ISugDao {
     public List<Sug> queryAllSug() {
         return sugMapper.queryAllSug();
     }
+
+    /**
+     * 增加意见
+     * @param sug
+     * @return
+     */
+    @Override
+    public int addSug(Sug sug) {
+        return sugMapper.addSug( sug );
+    }
 }

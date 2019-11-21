@@ -34,9 +34,9 @@
 </script>
 <div style="float: right;"><button class="btn-primary" href="#" onclick="sure()">退出登录</button></div>
 <div class="center-block" style="text-align: center;padding-top:60px ;">
-    <button type="button" class="btn btn-danger button01" onclick="window.location.href='book.jsp'">书籍管理</button>
+    <button type="button" class="btn btn-danger button01" onclick="window.location.href='/book/queryBook'">书籍管理</button>
 
-    <button type="button" class="btn btn-primary button01" onclick="window.location.href='order.jsp'">订单管理</button>
+    <button type="button" class="btn btn-primary button01" onclick="window.location.href='/order/queryOrder'">订单管理</button>
 
     <button type="button" class="btn btn-danger button01" onclick="window.location.href='/bcategory/queryBcategory'">分类管理
     </button>

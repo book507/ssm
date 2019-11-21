@@ -1,11 +1,10 @@
-package com.goldenhouse.mapper;
+package com.goldenhouse.service;
 
 import com.goldenhouse.entity.Order;
 
 import java.util.List;
 
-public interface OrderMapper {
-
+public interface IOrderService {
     /**
      * 根据订单ID删除该订单信息
      * @param oId

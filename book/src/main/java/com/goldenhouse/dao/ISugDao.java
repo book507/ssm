@@ -17,4 +17,11 @@ public interface ISugDao {
      * @return
      */
     List<Sug> queryAllSug();
+
+    /**
+     * 增加意见信息
+     * @param sug
+     * @return
+     */
+    int addSug(Sug sug);
 }
