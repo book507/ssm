@@ -57,7 +57,7 @@
 
         ]]>
     </select>
-
+    <!--用户更新个人信息-->
     <update id="updateCustomerInfo" parameterType="customer" >
             <![CDATA[
                             update t_cus
@@ -73,6 +73,15 @@
         ]]>
     </update>
 
+    <!--用户修改密码-->
+    <update id="updateCustomerPass" parameterType="customer" >
+            <![CDATA[
+                            update t_cus
+                            set
+                            c_pwd=#{cPwd}
+                            where
+                            c_id=#{cId}
 
-
+        ]]>
+    </update>
 </mapper>

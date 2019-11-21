@@ -51,4 +51,10 @@ public class CustomerDaoImpl implements ICustomerDao {
 
         return customerMapper.updateCustomerInfo(customer);
     }
+
+    //用户修改密码
+    @Override
+    public int updateCustomerPass(Customer customer) {
+        return customerMapper.updateCustomerPass(customer);
+    }
 }

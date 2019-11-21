@@ -15,10 +15,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
             <value>root</value>
         </property>
         <property name="password">
-            <value></value>
+            <value>123456</value>
         </property>
         <property name="url">
-            <value>jdbc:mysql://localhost:3306/book?useUnicode=true&amp;characterEncoding=utf8</value>
+            <value>jdbc:mysql://localhost:3306/goldenhouse?useUnicode=true&amp;characterEncoding=utf8</value>
         </property>
         <!-- 初始化连接数量-->
         <property name="initialSize">

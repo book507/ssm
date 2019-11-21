@@ -56,6 +56,7 @@ public class CustomerController {
         if (cus != null) {
             session.setAttribute("userId",cus.getcId());
             session.setAttribute("username", cus.getcNo());
+            session.setAttribute("password",cus.getcPwd());
             model.addAttribute("customer", cus);
             return "cus_index";
         } else {
@@ -131,6 +132,24 @@ public class CustomerController {
             return "customer_update_info_success";
         } else if (rows == 0) {
             return "customer_update_info_failure";
+        } else {
+            return "occur_error";
+        }
+    }
+
+    /**
+     * 用户修改个人密码功能
+     * @param customer
+     * @return
+     */
+    @RequestMapping("updatePass")
+    public String updateCustomerPass(Customer customer){
+
+        int rows=customerService.updateCustomerPass(customer);
+        if (rows > 0) {
+            return "customer_update_pass_success";
+        } else if (rows == 0) {
+            return "customer_update_pass_failure";
         } else {
             return "occur_error";
         }

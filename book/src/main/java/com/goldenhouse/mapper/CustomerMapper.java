@@ -37,4 +37,11 @@ public interface CustomerMapper {
      * @return
      */
     int updateCustomerInfo(Customer customer);
+
+    /**
+     * 用户更新个人密码接口
+     * @param customer
+     * @return
+     */
+    int updateCustomerPass(Customer customer);
 }

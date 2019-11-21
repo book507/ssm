@@ -70,5 +70,16 @@ public class CustomerServiceImpl implements ICustomerService {
 
         return customerDao.updateCustomerInfo(customer);
     }
+
+    /**
+     * 用户修改个人密码功能的实现
+     * @param customer
+     * @return
+     */
+    @Override
+    public int updateCustomerPass(Customer customer) {
+
+        return customerDao.updateCustomerPass(customer);
+    }
 }
 

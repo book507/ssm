@@ -42,6 +42,13 @@ public interface ICustomerDao {
      */
     int updateCustomerInfo(Customer customer);
 
+    /**
+     * 用户更新个人密码
+     * @param customer
+     * @return
+     */
+    int updateCustomerPass(Customer customer);
+
 
 
 }
