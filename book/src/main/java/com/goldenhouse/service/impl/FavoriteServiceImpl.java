@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 @Service("favoriteService")
 public class FavoriteServiceImpl implements IFavoriteService {
     @Autowired
@@ -33,7 +35,7 @@ public class FavoriteServiceImpl implements IFavoriteService {
      * @return
      */
     @Override
-    public List<Favorite> queryBookOfFavorite(int cId) {
+    public List<Map<String,Object>> queryBookOfFavorite(int cId) {
         return favoriteDao.queryBookOfFavorite(cId);
     }
 

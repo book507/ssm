@@ -13,7 +13,8 @@
     <select id="queryBookOfFavorite" parameterType="int" resultMap="favoriteResultMap1">
         <![CDATA[
            select
-           b.b_name,b.b_price,b.b_what,bs_name
+           b.b_name,b.b_price,
+           b.b_what,bs_name
            from
            t_fav as f,t_cus as c,t_book as b,t_bs as bs
            where
@@ -21,7 +22,7 @@
            and f.c_id=#{cId}
         ]]>
     </select>
-    <resultMap id="favoriteResultMap1" type="favorite">
+    <resultMap id="favoriteResultMap1" type="map">
         <id property="fId" column="f_id"></id>
         <association property="customer" javaType="customer">
             <id property="cId" column="c_id"></id>
@@ -33,7 +34,7 @@
             <result property="bookWhat" column="b_what"></result>
             <association property="bcategory" javaType="bcategory">
                 <id property="bsId" column="bs_id"></id>
-                <result property="bsWhat" column="bs_what"></result>
+                <result property="bsName" column="bs_name"></result>
             </association>
         </collection>
     </resultMap>

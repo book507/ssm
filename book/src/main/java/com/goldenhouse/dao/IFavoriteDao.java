@@ -3,6 +3,7 @@ package com.goldenhouse.dao;
 import com.goldenhouse.entity.Favorite;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IFavoriteDao {
     /**
@@ -17,6 +18,6 @@ public interface IFavoriteDao {
      * @param cId
      * @return
      */
-    List<Favorite> queryBookOfFavorite(int cId);
+    List<Map<String,Object>> queryBookOfFavorite(int cId);
 
 }

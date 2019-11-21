@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
-    <img src="images/fav.jpg" height="100%" width="100%"/>
+    <img src="../images/fav.jpg" height="100%" width="100%"/>
 </div>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -45,17 +45,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                ${favoriteList}
-                <c:forEach items="${favoriteList}" var="favorite">
+                <c:forEach items="${mapList}" var="map">
+                    ${map}
                     <tr>
                         <td>
-                            <c:out value="${book.getBsId() }"/>
+                            ${map.books.bookName}
                         </td>
                         <td>
-                            <c:out value="${book.getBsName()}"/>
+                            ${map.books.bookPrice}
                         </td>
                         <td>
-                            <c:out value="${book.getBsWhat()}"/>
+                            ${map.books.bookWhat}
+                        </td>
+                        <td>
+                            ${map.books.bcategory.bsName}
                         </td>
                         <td>
                             <a href="wait.html">修改</a>
