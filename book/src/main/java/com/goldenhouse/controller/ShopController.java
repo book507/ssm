@@ -113,5 +113,16 @@ public class ShopController {
         return "shop_update_result";
     }
 
+    /**
+     * 管理员根据积分商品ID删除积分商品信息
+     * @param sId
+     * @return
+     */
+    @RequestMapping("deleteShop")
+    public String deleteShop(int sId,Model model){
+        int rows=shopService.deleteShop( sId );
+        model.addAttribute("rows", rows);
+        return "redirect:queryShop";
+    }
 
 }

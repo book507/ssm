@@ -31,4 +31,11 @@ public interface IShopService {
      * @return
      */
     int updateShop(Shop shop);
+
+    /**
+     * 根据商品ID删除积分商品信息
+     * @param sId
+     * @return
+     */
+    int deleteShop(int sId);
 }

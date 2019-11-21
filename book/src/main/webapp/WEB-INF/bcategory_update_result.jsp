@@ -23,7 +23,7 @@
         <a href="/bcategory/queryBcategory" ><button type="button" class="btn-primary">查看书籍分类</button></a>
     </c:when>
     <c:otherwise>
-        服务器异常
+        服务器异常<a href="/bcategory/queryBcategory" >请重新修改</a>
     </c:otherwise>
 </c:choose>
 </body>

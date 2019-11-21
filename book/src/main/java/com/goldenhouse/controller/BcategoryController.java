@@ -52,7 +52,6 @@ public class BcategoryController {
      */
     @RequestMapping("deleteBcategory")
     public String deleteBcategory(int bs_id,Model model){
-
         try {
              iBcategoryService.deleteBcategory( bs_id );
         }catch (Exception e){

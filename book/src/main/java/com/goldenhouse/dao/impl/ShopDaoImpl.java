@@ -54,4 +54,14 @@ public class ShopDaoImpl implements IShopDao {
     public int updateShop(Shop shop) {
         return shopMapper.updateShop( shop );
     }
+
+    /**
+     * 根据商品ID删除积分商品信息
+     * @param sId
+     * @return
+     */
+    @Override
+    public int deleteShop(int sId) {
+        return shopMapper.deleteShop( sId );
+    }
 }

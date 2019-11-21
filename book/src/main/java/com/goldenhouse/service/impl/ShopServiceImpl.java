@@ -53,4 +53,14 @@ public class ShopServiceImpl implements IShopService {
     public int updateShop(Shop shop) {
         return shopDao.updateShop( shop );
     }
+
+    /**
+     * 根据商品ID删除积分商品信息
+     * @param sId
+     * @return
+     */
+    @Override
+    public int deleteShop(int sId) {
+        return shopDao.deleteShop( sId );
+    }
 }

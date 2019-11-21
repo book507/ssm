@@ -4,7 +4,18 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title></title>
+    <title>书籍分类</title>
+    <script type="text/javascript">
+
+        function sure () {  //确认删除意见的提示框
+
+            if(confirm("确认删除？"))
+            {
+                return true;
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
@@ -53,7 +64,7 @@
                         <td>
                             <a href="bcategory_update.action?bs_id=${book.getBsId()}">修改</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="deleteBcategory?bs_id=${book.getBsId()}">删除</a>
+                            <a href="deleteBcategory?bs_id=${book.getBsId()} " onclick="return sure();">删除</a>
                         </td>
                     </tr>
 
