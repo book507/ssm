@@ -25,7 +25,7 @@ public class SugController {
      */
     @RequestMapping("queryAllSug")
     public String queryAllSug(Model model, HttpServletRequest request){
-        String forword="mailbox";
+        String forword="sug";
         List<Sug> sugList= iSugService.queryAllSug();
         model.addAttribute("sugList", sugList);
         request.setAttribute("sugList", sugList);
@@ -40,7 +40,7 @@ public class SugController {
     public String deleteSug(int sugId,Model model){
         int rows=iSugService.deleteSug( sugId );
         model.addAttribute("rows", rows);
-        return "redirect:queryAllSug";
+        return "sug_delete_result";
     }
 
     /**

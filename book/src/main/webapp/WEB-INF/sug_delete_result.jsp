@@ -9,7 +9,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>书籍分类添加结果页面</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>意见删除结果页面</title>
 </head>
 <body>
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
@@ -17,12 +18,12 @@
 </div>
 <c:choose>
     <c:when test="${rows==1}">
-        <h1 align="center">添加成功</h1><br><a href="/bcategory/bcategory_add.action">继续添加</a>
+        <h1 align="center">删除成功</h1>
         <br>
-        <a href="/bcategory/queryBcategory">查看书籍分类</a>
+        <a href="/sug/queryAllSug" ><button type="button" class="btn-primary">查看其他意见信息</button></a>
     </c:when>
     <c:otherwise>
-        服务器异常
+        服务器异常<a href="/sug/queryAllSug" >请重新操作</a>
     </c:otherwise>
 </c:choose>
 </body>

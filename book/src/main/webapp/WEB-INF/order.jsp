@@ -77,9 +77,9 @@
                                 <c:out value="${order.getoSta()}"/>
                             </td>
                             <td>
-                                <a href="order_update.action?bs_id=${order.getoId()}">修改</a>
+                                <a href="order_update.action?oId=${order.getoId()}">修改</a>
                                 &nbsp;&nbsp;&nbsp;
-                                <a href="deleteOrder?sugId=${order.getoId()}"  onclick="sure();">删除</a>
+                                <a href="deleteOrder?oId=${order.getoId()}"  onclick="return sure();">删除</a>
                             </td>
                         </tr>
 

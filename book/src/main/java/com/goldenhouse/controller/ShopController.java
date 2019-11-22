@@ -122,7 +122,7 @@ public class ShopController {
     public String deleteShop(int sId,Model model){
         int rows=shopService.deleteShop( sId );
         model.addAttribute("rows", rows);
-        return "redirect:queryShop";
+        return "shop_delete_result";
     }
 
 }

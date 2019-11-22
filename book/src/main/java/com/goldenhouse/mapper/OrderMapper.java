@@ -18,4 +18,19 @@ public interface OrderMapper {
      * @return
      */
     List<Order> queryOrder();
+
+    /**
+     * 根据订单ID查询单个订单信息
+     * @param oId
+     * @return
+     */
+    Order queryOrderById(int oId);
+
+
+    /**
+     * 修改订单状态
+     * @param order
+     * @return
+     */
+    int updateOrderOfSta(Order order);
 }

@@ -27,7 +27,7 @@ public class OrderController {
     public String deleteOrder(int oId, Model model){
         int rows=iOrderService.deleteOrder( oId );
         model.addAttribute("rows", rows);
-        return "redirect:queryOrder";
+        return "order_delete_result";
     }
 
     /**
@@ -43,6 +43,29 @@ public class OrderController {
         return forword;
     }
 
+    /**
+     * 管理员跳转到订单状态修改页面
+     * @return
+     */
+    @RequestMapping("/order_update.action")
+    public String adminOrderUpdate(int oId,Model model ){
+        Order order=iOrderService.queryOrderById( oId );
+        model.addAttribute("order",order);
+        String forword="order_update";
+        return forword;
+    }
+
+    /**
+     * 管理员根据订单ID修改书订单状态
+     * @param order
+     * @return
+     */
+    @RequestMapping("order_update")
+    public String OrderUpdate(Order order,Model model){
+        int rows=iOrderService.updateOrderOfSta( order );
+        model.addAttribute( "rows",rows );
+        return "order_update_result";
+    }
 
 
 }

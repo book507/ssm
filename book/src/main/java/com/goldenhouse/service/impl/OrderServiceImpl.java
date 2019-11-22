@@ -33,4 +33,25 @@ public class OrderServiceImpl implements IOrderService {
     public List<Order> queryOrder() {
         return iOrderDao.queryOrder();
     }
+
+    /**
+     * 根据订单ID查询单个订单信息
+     * @param oId
+     * @return
+     */
+    @Override
+    public Order queryOrderById(int oId) {
+        return iOrderDao.queryOrderById( oId );
+    }
+
+    /**
+     * 修改订单状态
+     * @param order
+     * @return
+     */
+    @Override
+    public int updateOrderOfSta(Order order) {
+        return iOrderDao.updateOrderOfSta( order );
+    }
+
 }

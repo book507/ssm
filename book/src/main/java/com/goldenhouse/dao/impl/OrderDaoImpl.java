@@ -32,4 +32,24 @@ public class OrderDaoImpl implements IOrderDao {
     public List<Order> queryOrder() {
         return orderMapper.queryOrder();
     }
+
+    /**
+     * 根据订单ID查询单个订单信息
+     * @param oId
+     * @return
+     */
+    @Override
+    public Order queryOrderById(int oId) {
+        return orderMapper.queryOrderById( oId );
+    }
+
+    /**
+     * 修改订单状态
+     * @param order
+     * @return
+     */
+    @Override
+    public int updateOrderOfSta(Order order) {
+        return orderMapper.updateOrderOfSta( order );
+    }
 }

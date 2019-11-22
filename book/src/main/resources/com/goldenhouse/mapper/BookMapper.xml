@@ -7,11 +7,11 @@
     <select id="queryBook" resultType="book">
 <![CDATA[
         select
-            b_id as BookId,
-            b_name as BookName,
-            b_price as BookPrice,
-            b_what as BookWhat,
-            bs_id as BsId
+            b_id as bookId,
+            b_name as bookName,
+            b_price as bookPrice,
+            b_what as bookWhat,
+            bs_id as bsId
         from
             t_book
 ]]>
@@ -19,22 +19,38 @@
 
     <!-- 增加书籍信息-->
     <insert id="addBook" parameterType="book">
-        insert t_book(b_name,b_price,b_what,bs_id)  values(#{BookName},#{BookPrice},#{BookWhat},#{BsId})
+        insert t_book(b_name,b_price,b_what,bs_id)  values(#{bookName},#{bookPrice},#{bookWhat},#{bsId})
     </insert>
 
     <!-- 根据书籍分类ID删除书籍分类信息-->
     <delete id="deleteBook" parameterType="int">
 <![CDATA[
-        delete FROM t_book WHERE b_id=#{BookId}
+        delete FROM t_book WHERE b_id=#{bookId}
 ]]>
     </delete>
 
     <!-- 根据书籍ID修改书籍信息-->
     <update id="updateBook" parameterType="book">
 <![CDATA[
-        update t_book set b_name=#{bookName},b_price=#{bookPrice},b_what=#{bookWhat},bs_id=#{bsId} where b_id=#{BookId}
+        update t_book set b_name=#{bookName},b_price=#{bookPrice},b_what=#{bookWhat},bs_id=#{bsId} where b_id=#{bookId}
 ]]>
     </update>
+
+    <!-- 根据书籍分类ID查询是否有书籍在该分类下-->
+    <select id="queryBookOfBsId" resultType="book">
+<![CDATA[
+        select
+            b_id as bookId,
+            b_name as bookName,
+            b_price as bookPrice,
+            b_what as bookWhat,
+            bs_id as bsId
+        from
+            t_book
+        where
+            bs_id=#{bsId}
+]]>
+        </select>
 
 
 </mapper>

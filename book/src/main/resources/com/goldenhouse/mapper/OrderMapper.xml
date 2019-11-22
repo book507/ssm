@@ -22,7 +22,26 @@
 ]]>
     </delete>
 
+    <!-- 根据订单ID查询单个订单信息-->
+    <select id="queryOrderById" resultType="order">
+<![CDATA[
+        select
+            o_id as oId,
+            o_no as oNo,
+            c_id as cId,
+            b_id as bId,
+            o_sta as oSta
+        from
+            t_order
+        where
+            o_id=#{oId}
+]]>
+        </select>
 
+<!--    修改订单状态-->
+    <update id="updateOrderOfSta" parameterType="order">
+update t_order set o_sta=#{oSta} where o_id=#{oId}
+    </update>
 
 
 </mapper>

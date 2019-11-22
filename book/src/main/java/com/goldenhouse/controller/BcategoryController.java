@@ -1,7 +1,9 @@
 package com.goldenhouse.controller;
 
 import com.goldenhouse.entity.Bcategory;
+import com.goldenhouse.entity.Book;
 import com.goldenhouse.service.IBcategoryService;
+import com.goldenhouse.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,11 @@ public class BcategoryController {
     @Autowired
     @Qualifier("bcategoryService")
     private IBcategoryService iBcategoryService ;
+
+    @Autowired
+    @Qualifier("bookService")
+    private IBookService iBookService ;
+
 
     /**
      * 添加书籍分类
@@ -52,17 +59,22 @@ public class BcategoryController {
      */
     @RequestMapping("deleteBcategory")
     public String deleteBcategory(int bs_id,Model model){
-        try {
-             iBcategoryService.deleteBcategory( bs_id );
-            model.addAttribute( "key" ,-10);
-        }catch (Exception e){
-            List<Bcategory> bcategoryList= iBcategoryService.queryBcategory();
-
-           model.addAttribute("bookfl", bcategoryList);
-            model.addAttribute( "key" ,10);
-            return "booksort";
+        int rows=-1;
+        List<Book> bookList=iBookService.queryBookOfBsId( bs_id );
+        System.out.println( bookList );
+        if(bookList.isEmpty()){
+            rows=iBcategoryService.deleteBcategory( bs_id );
+            model.addAttribute("rows", rows);
+            return "bcategory_delete_result";
         }
-            return "redirect:queryBcategory";
+        else if(bookList!=null){
+            rows=0;
+            model.addAttribute("rows", rows);
+            return "bcategory_delete_result";
+        }else{
+            return "bcategory_delete_result";
+        }
+
     }
 
     /**
@@ -85,7 +97,6 @@ public class BcategoryController {
     @RequestMapping("bcategory_update")
     public String bcategoryUpdate(Bcategory bcategory,Model model){
         int rows=iBcategoryService.updateBcategory( bcategory );
-        System.out.println( "**************************************"+rows );
         model.addAttribute( "rows",rows );
         return "bcategory_update_result";
     }
