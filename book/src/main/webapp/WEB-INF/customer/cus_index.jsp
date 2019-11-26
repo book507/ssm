@@ -50,7 +50,7 @@
             <a href="#"><img src="../../images/logohjw.jpg" alt=""/></a>
         </div>
         <div class="seacher fl">
-            <form action="/book/keyword" method="post">
+            <form name="from" action="/book/keyword" method="post" >
                 <input type="text" name="keyword" placeholder="千里之行,始于足下"/><input type="submit" value="搜 索"/>
             </form>
             <p>热门搜索：<a href="#">平凡的世界</a> &nbsp;&nbsp;<a href="#">百年孤独</a> &nbsp;&nbsp;<a href="#">愿生命从容</a>&nbsp;&nbsp; <a href="#">四级高频词典</a> &nbsp;&nbsp;<a href="#">斗破苍穹</a></p>

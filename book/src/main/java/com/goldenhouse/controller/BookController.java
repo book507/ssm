@@ -163,11 +163,16 @@ public class BookController {
      */
     @RequestMapping("keyword")
     public String keywordSearch(Book book,String keyword,Model model){
-        book.setBookName(keyword);
-        List<Map> mapList=iBookService.keywordSearch(book);
-        System.out.println(mapList);
-        model.addAttribute("mapList",mapList);
-        return "customer/book/cus_book";
+        if (keyword==null||keyword==""){
+            return "customer/book/cus_book";
+        }else {
+            book.setBookName(keyword);
+            List<Map> mapList=iBookService.keywordSearch(book);
+            System.out.println(mapList);
+            model.addAttribute("mapList",mapList);
+            return "customer/book/cus_book";
+        }
+
     }
 
 
