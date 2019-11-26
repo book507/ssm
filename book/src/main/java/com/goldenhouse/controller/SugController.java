@@ -42,7 +42,7 @@ public class SugController {
     }
 
     /**
-     * 用户添加意见信息
+     * 用户添加意见信息悉
      * @param sug
      * @return
      */

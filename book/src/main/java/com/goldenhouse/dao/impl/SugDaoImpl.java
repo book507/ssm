@@ -36,7 +36,7 @@ public class SugDaoImpl implements ISugDao {
     }
 
     /**
-     * 用户提交意见
+     * 用户提交意见悉
      * @return
      */
     @Override

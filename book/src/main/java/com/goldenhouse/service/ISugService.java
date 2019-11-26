@@ -14,7 +14,7 @@ public interface ISugService {
     int deleteSug(int sugId);
 
     /**
-     * 查询所有意见信息
+     * 查询所有意见信息悉
      * @return
      */
     List<Sug> queryAllSug();

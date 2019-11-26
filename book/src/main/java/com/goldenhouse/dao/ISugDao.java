@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISugDao {
     /**
-     * 根据意见ID删除该意见信息
+     * 根据意见ID删除该意见信息悉
      * @param sugId
      * @return
      */

@@ -27,7 +27,7 @@
     <insert id="cusSubmitSug" parameterType="sug">
         insert into t_sug(c_id,sug_what,sug_time)
         values(#{cId},#{sugWhat},sysdate())
-    </insert>
+    </insert> 
 
 
 </mapper>

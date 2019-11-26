@@ -12,8 +12,17 @@
     <script type="text/javascript">
         function yz(){
             if(document.form.cNPwd.value!=document.form.rcNPwd.value){
-                alert("输入的两次密码不一致！");
-                return false;}
+                alert("输入的新密码与确认密码不一致！");
+                return false;
+            }
+            if (document.form.cPwd.value==document.form.cNPwd.value) {
+                alert("新密码与原密码一致，请重新修改！");
+                return false;
+            }
+            if(document.form.cNPwd.value==document.form.rcNPwd.value&&document.form.cPwd.value!=document.form.cNPwd.value){
+                alert("确认要修改您的密码？");
+                return true;
+            }
         }
     </script>
 </head>
