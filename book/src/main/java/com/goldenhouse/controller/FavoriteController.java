@@ -85,7 +85,7 @@ public class FavoriteController {
             int bI=favorite.getBId();
             int rows=favoriteService.addBookToCart(cI,bI);
             model.addAttribute("rows",rows);
-            return "customer/favorites/favorite_add_result";
+            return "customer/gwc/cart_add_result";
         }
     }
 

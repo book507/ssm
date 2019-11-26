@@ -27,7 +27,14 @@
     <insert id="cusSubmitSug" parameterType="sug">
         insert into t_sug(c_id,sug_what,sug_time)
         values(#{cId},#{sugWhat},sysdate())
-    </insert> 
+    </insert>
 
+    <!--用户提交意见后奖励固定的积分-->
+    <update id="getGradeFromSug" parameterType="int">
+        <![CDATA[
+        update t_cus set c_grade=(c_grade+1)
+        where c_id=#{cId}
+     ]]>
+    </update>
 
 </mapper>

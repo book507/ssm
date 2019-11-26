@@ -17,7 +17,7 @@ public class SugServiceImpl implements ISugService {
     private ISugDao iSugDao ;
 
     /**
-     * 根据意见ID删除该意见信息悉
+     * 根据意见ID删除该意见信息
      * @param sugId
      * @return
      */
@@ -44,4 +44,13 @@ public class SugServiceImpl implements ISugService {
         return iSugDao.cusSubmitSug(sug);
     }
 
+    /**
+     * 用户提交意见后奖励固定的积分
+     * @param cId
+     * @return
+     */
+    @Override
+    public int getGradeFromSug(int cId) {
+        return iSugDao.getGradeFromSug(cId);
+    }
 }

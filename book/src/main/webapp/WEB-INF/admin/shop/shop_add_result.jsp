@@ -18,9 +18,10 @@
 </div>
 <c:choose>
     <c:when test="${rows==1}">
-        <h1 align="center">添加成功</h1><br><a href="/shop/shop_add.action">继续添加</a>
+        <h1 align="center">添加成功</h1><br>
+        <a href="/shop/shop_add.action"><button type="button" class="btn-primary">点此继续添加</button></a>
         <br>
-        <a href="/shop/queryShop" ><button type="button" class="btn-primary">查看积分商品</button></a>
+        <a href="/shop/queryShop" ><button type="button" class="btn-success">查看积分商品</button></a>
     </c:when>
     <c:otherwise>
         服务器异常

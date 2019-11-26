@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, td, textarea, th, ul {
             margin: 0;
@@ -121,13 +122,22 @@
             border-color: #20a0ff;
         }
         .user-my-btn .el-button--primary {
-            width: 110px;
+             width: 110px;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             -webkit-transform: translate(-50%, -50%);
+             transform: translate(-50%, -50%);
+             background: #00a1d6 !important;
+         }
+        .user-my-btn .el-button--primary02 {
+            width: 70px;
             position: absolute;
             top: 50%;
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            background: #00a1d6 !important;
+            background: #9E3F3F !important;
         }
         .el-form-item__label {
             text-align: right;
@@ -382,8 +392,7 @@
                             <div class="el-form-item user-my-btn">
                                 <!---->
                                 <div class="el-form-item__content">
-                                    <div><button type="button" class="btn btn-primary" onclick="window.location.href='/customer/customer_updatepwd.action?cId=<%=session.getAttribute("userId")%>'">修改密码</button></div>
-                                    <div class="padding-dom"></div>
+                                    <div><button type="button" class="btn btn-danger" onclick="window.location.href='/customer/customer_updatepwd.action?cId=<%=session.getAttribute("userId")%>'">修改密码</button></div>
                                     <div class="user-my-btn-warp"><button class="el-button el-button--primary" onclick="window.location.href='/customer/loadInfo?cId=<%=session.getAttribute("userId")%>'" type="button">
                                         <span>编辑</span></button>
                                     </div>

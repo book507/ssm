@@ -6,7 +6,7 @@ import java.util.List;
 public interface SugMapper {
 
     /**
-     * 根据意见ID删除该意见信息悉
+     * 根据意见ID删除该意见信息
      * @param sugId
      * @return
      */
@@ -24,4 +24,10 @@ public interface SugMapper {
      */
     int cusSubmitSug(Sug sug);
 
+    /**
+     * 用户提交意见后奖励固定的积分
+     * @param cId
+     * @return
+     */
+    int getGradeFromSug(int cId);
 }

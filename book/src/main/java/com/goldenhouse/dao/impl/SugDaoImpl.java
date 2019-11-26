@@ -36,7 +36,7 @@ public class SugDaoImpl implements ISugDao {
     }
 
     /**
-     * 用户提交意见悉
+     * 用户提交意见
      * @return
      */
     @Override
@@ -44,4 +44,13 @@ public class SugDaoImpl implements ISugDao {
         return sugMapper.cusSubmitSug(sug);
     }
 
+    /**
+     * 用户提交意见后奖励固定的积分
+     * @param cId
+     * @return
+     */
+    @Override
+    public int getGradeFromSug(int cId) {
+        return sugMapper.getGradeFromSug(cId);
+    }
 }

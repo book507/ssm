@@ -42,13 +42,14 @@ public class SugController {
     }
 
     /**
-     * 用户添加意见信息悉
+     * 用户添加意见信息
      * @param sug
      * @return
      */
     @RequestMapping("submitSug")
-    public String cusSubmitSug(Sug sug,Model model){
+    public String cusSubmitSug(int cId,Sug sug,Model model){
         int rows=iSugService.cusSubmitSug(sug);
+        iSugService.getGradeFromSug(cId);
         model.addAttribute("rows",rows);
         return "customer/suggest/sug_submit_result";
     }

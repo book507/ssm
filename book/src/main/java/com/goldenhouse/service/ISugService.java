@@ -14,7 +14,7 @@ public interface ISugService {
     int deleteSug(int sugId);
 
     /**
-     * 查询所有意见信息悉
+     * 查询所有意见信息
      * @return
      */
     List<Sug> queryAllSug();
@@ -25,4 +25,10 @@ public interface ISugService {
      */
     int cusSubmitSug(Sug sug);
 
+    /**
+     * 用户提交意见后奖励固定的积分
+     * @param cId
+     * @return
+     */
+    int getGradeFromSug(int cId);
 }
