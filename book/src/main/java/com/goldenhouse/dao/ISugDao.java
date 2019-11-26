@@ -19,9 +19,9 @@ public interface ISugDao {
     List<Sug> queryAllSug();
 
     /**
-     * 增加意见信息
-     * @param sug
+     * 用户提交意见
      * @return
      */
-    int addSug(Sug sug);
+    int cusSubmitSug(Sug sug);
+
 }

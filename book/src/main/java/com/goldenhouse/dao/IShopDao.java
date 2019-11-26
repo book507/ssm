@@ -38,4 +38,20 @@ public interface IShopDao {
      * @return
      */
     int deleteShop(int sId);
+
+    /**
+     * 兑换前先查询出用户个人的积分
+     * @param cId
+     * @return
+     */
+    int getGradeFromCus(int cId);
+
+    /**
+     * 兑换成功后减去相应的积分
+     * @param sPrice
+     * @param cId
+     * @return
+     */
+    int minGrade(int sPrice,int cId);
+
 }

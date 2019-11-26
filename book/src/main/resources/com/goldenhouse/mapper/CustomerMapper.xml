@@ -3,85 +3,108 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.CustomerMapper">
+
     <!--用户注册-->
     <insert id="registerCustomer" parameterType="customer">
-            <![CDATA[
-                                      insert into
-                                      t_cus(c_no,c_pwd,c_sfz)
-                                      values(#{cNo},MD5(#{cPwd}),#{cSfz})
-        ]]>
+<![CDATA[
+         insert into t_cus(c_no,c_pwd,c_sfz,c_grade)
+         values(#{cNo},MD5(#{cPwd}),#{cSfz},100)
+ ]]>
     </insert>
+
     <!--用户登录-->
     <select id="customerLogIn" parameterType="customer" resultType="customer">
-    <![CDATA[
-                            select
-                                c_id as cId,
-                                c_no as cNo,
-                                c_pwd as cPwd
-                            from
-                                t_cus
-                            where
-                                c_no=#{cNo} and
-                                c_pwd=MD5(#{cPwd})
-
-
-        ]]>
+<![CDATA[
+        select
+            c_id as cId,
+            c_no as cNo,
+            c_pwd as cPwd
+        from
+            t_cus
+        where
+            c_no=#{cNo} and
+            c_pwd=MD5(#{cPwd})
+]]>
     </select>
+
     <!--用户找回密码-->
     <update id="findCustomerPassword" parameterType="customer">
-    <![CDATA[
-                            update t_cus
-                            set
-                            c_pwd=MD5(#{cPwd})
-                            where
-                            c_no=#{cNo} and c_sfz=#{cSfz}
-
-        ]]>
+<![CDATA[
+        update t_cus
+        set c_pwd=MD5(#{cPwd})
+        where c_no=#{cNo} and c_sfz=#{cSfz}
+]]>
     </update>
+
     <!--查看用户个人信息-->
     <select id="customerLookInfo" parameterType="customer" resultType="customer">
-    <![CDATA[
-                            select
-                                c_id as cId,
-                                c_no as cNo,
-                                c_sfz as cSfz,
-                                c_name as cName,
-                                c_sex as cSex,
-                                c_tel as cTel,
-                                c_address as cAddress,
-                                c_grade as cGrade
-                            from
-                                t_cus
-                            where
-                                c_id=#{cId}
-
-        ]]>
+<![CDATA[
+        select
+            c_id as cId,
+            c_no as cNo,
+            c_sfz as cSfz,
+            c_name as cName,
+            c_sex as cSex,
+            c_tel as cTel,
+            c_address as cAddress,
+            c_grade as cGrade
+        from
+            t_cus
+        where
+            c_id=#{cId}
+]]>
     </select>
+
     <!--用户更新个人信息-->
     <update id="updateCustomerInfo" parameterType="customer" >
-            <![CDATA[
-                            update t_cus
-                            set
-                            c_no=#{cNo},
-                            c_name=#{cName},
-                            c_sex=#{cSex},
-                            c_tel=#{cTel},
-                            c_address=#{cAddress}
-                            where
-                            c_id=#{cId}
-
-        ]]>
+<![CDATA[
+        update t_cus
+        set c_no=#{cNo},
+            c_name=#{cName},
+            c_sex=#{cSex},
+            c_tel=#{cTel},
+            c_address=#{cAddress}
+        where c_id=#{cId}
+]]>
     </update>
 
     <!--用户修改密码-->
     <update id="updateCustomerPass" parameterType="customer" >
-            <![CDATA[
-                            update t_cus
-                            set
-                            c_pwd=#{cPwd}
-                            where
-                            c_id=#{cId}
-
-        ]]>
+<![CDATA[
+        update t_cus
+        set c_pwd=MD5(#{cPwd})
+        where c_id=#{cId}
+]]>
     </update>
+
+<!--    根据用户名或身份证号查询是否存在该用户-->
+    <select id="queryCustomerByCno" parameterType="customer" resultType="customer">
+<![CDATA[
+        select
+            c_id as cId,
+            c_no as cNo,
+            c_sfz as cSfz
+        from
+            t_cus
+        where
+            c_no=#{cNo} or
+            c_sfz=#{cSfz}
+]]> </select>
+
+    <!--根据用户id和密码，查询是否存在该用户-->
+    <select id="queryCusByCid" parameterType="customer"  resultType="customer">
+<![CDATA[
+        select
+            c_id as cId,
+            c_pwd as cPwd
+        from
+            t_cus
+        where
+            c_id=#{cId} and
+            c_pwd=MD5(#{cPwd})
+]]>
+    </select>
+
+
+
 </mapper>

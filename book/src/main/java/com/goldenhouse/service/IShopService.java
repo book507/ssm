@@ -5,6 +5,7 @@ import com.goldenhouse.entity.Shop;
 import java.util.List;
 
 public interface IShopService {
+
     /**
      * 查看所有商品列表
      * @return
@@ -38,4 +39,20 @@ public interface IShopService {
      * @return
      */
     int deleteShop(int sId);
+
+    /**
+     * 兑换前先查询出用户个人的积分
+     * @param cId
+     * @return
+     */
+    int getGradeFromCus(int cId);
+
+    /**
+     * 兑换成功后减去相应的积分
+     * @param sPrice
+     * @param cId
+     * @return
+     */
+    int minGrade(int sPrice,int cId);
+
 }

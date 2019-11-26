@@ -17,4 +17,14 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <!--后缀-->
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/customer/**"/>
+            <mvc:mapping path="/favorite/**"/>
+             <mvc:exclude-mapping path="/customer/register"/>
+            <bean class=""/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
 </beans>

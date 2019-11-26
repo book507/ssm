@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service("shopService")
 public class ShopServiceImpl implements IShopService {
+
     @Autowired
     @Qualifier("shopDao")
     private IShopDao shopDao;
@@ -63,4 +64,26 @@ public class ShopServiceImpl implements IShopService {
     public int deleteShop(int sId) {
         return shopDao.deleteShop( sId );
     }
+
+    /**
+     * 兑换前先查询出用户个人的积分
+     * @param cId
+     * @return
+     */
+    @Override
+    public int getGradeFromCus(int cId) {
+        return shopDao.getGradeFromCus(cId);
+    }
+
+    /**
+     * 兑换成功后减去相应的积分
+     * @param sPrice
+     * @param cId
+     * @return
+     */
+    @Override
+    public int minGrade(int sPrice,int cId) {
+        return shopDao.minGrade(sPrice,cId);
+    }
+
 }

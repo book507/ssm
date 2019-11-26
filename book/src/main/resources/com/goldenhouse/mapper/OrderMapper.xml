@@ -3,9 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.OrderMapper">
+
     <!-- 查询所有订单信息-->
     <select id="queryOrder" resultType="order">
-        select
+<![CDATA[
+       select
             o_id as oId,
             o_no as oNo,
             c_id as cId,
@@ -13,7 +15,8 @@
             o_sta as oSta
         from
             t_order
-        </select>
+]]>
+    </select>
 
     <!-- 根据订单ID删除订单信息-->
     <delete id="deleteOrder" parameterType="int">
@@ -38,10 +41,56 @@
 ]]>
         </select>
 
-<!--    修改订单状态-->
+    <!-- 修改订单状态-->
     <update id="updateOrderOfSta" parameterType="order">
-update t_order set o_sta=#{oSta} where o_id=#{oId}
+<![CDATA[
+        update t_order
+        set o_sta=#{oSta}
+        where o_id=#{oId}
+]]>
     </update>
+
+    <!-- 根据书籍ID查询订单信息-->
+    <select id="queryOrderBybookId" resultType="order">
+<![CDATA[
+        select
+            o_id as oId,
+            o_no as oNo,
+            c_id as cId,
+            b_id as bId,
+            o_sta as oSta
+        from
+            t_order
+        where
+            b_id=#{bId}
+]]>
+        </select>
+
+<!--用户查看个人所有订单-->
+        <select id="queryOrderOfCus" parameterType="Integer" resultMap="orderMapOfCus">
+<![CDATA[
+         select o.o_id,o.c_id,o.b_id,
+         o.o_no,b.b_name,o.o_sta
+         from t_order as o,t_book as b,t_cus as c
+         where o.c_id=c.c_id and o.b_id=b.b_id
+         and o.c_id=#{cId}
+]]>
+</select>
+    <resultMap id="orderMapOfCus" type="map">
+        <id property="oId" column="o_id"></id>
+        <result property="oId" column="o_id"></result>
+        <result property="cId" column="c_id"></result>
+        <result property="bId" column="b_id"></result>
+        <result property="oNo" column="o_no"></result>
+        <result property="oSta" column="o_sta"></result>
+        <association property="customer" javaType="customer">
+            <id property="cId" column="c_id"></id>
+        </association>
+        <association property="book" javaType="book">
+            <id property="bookId" column="b_id"></id>
+            <result property="bookName" column="b_name"></result>
+        </association>
+    </resultMap>
 
 
 </mapper>

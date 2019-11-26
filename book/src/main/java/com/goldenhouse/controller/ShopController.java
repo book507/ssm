@@ -21,29 +21,23 @@ public class ShopController {
     private IShopService shopService;
 
     /**
-     * 查看所有积分商品
+     * 用户查看所有积分商品
      * @param model
      * @param session
      * @return
      */
     @RequestMapping("queryAll")
-    public String queryAllShop(Model model, HttpSession session){
+    public String queryAllShop(int cId, Model model, HttpSession session){
         List<Shop> shopList=shopService.queryAllShop();
         for (Shop shop:shopList){
             System.out.println(shop);
         }
+        model.addAttribute( "cId",cId );
         model.addAttribute("shopList",shopList);
-        return "cus_shop";
+        return "customer/shop/cus_shop";
     }
 
-    /**
-     * 返回用户个人主页面
-     * @return
-     */
-    @RequestMapping("returnIndex")
-    public String returnCusIndex(){
-        return "cus_index";
-    }
+
     /**
      * 添加积分商品
      * @param shop
@@ -53,7 +47,7 @@ public class ShopController {
     public String addShop(Shop shop,Model model){
         int rows=shopService.addShop( shop );
         model.addAttribute( "rows",rows );
-        return "shop_add_result";
+        return "admin/shop/shop_add_result";
     }
 
     /**
@@ -62,7 +56,7 @@ public class ShopController {
      */
     @RequestMapping("/shop_add.action")
     public String adminBcategoryAdd(){
-        String forword="shop_add";
+        String forword="admin/shop/shop_add";
         return forword;
     }
 
@@ -72,7 +66,7 @@ public class ShopController {
      */
     @RequestMapping("/shop.action")
     public String shopAction(){
-        String forword="shop";
+        String forword="admin/shop/shop";
         return forword;
     }
 
@@ -82,7 +76,7 @@ public class ShopController {
      */
     @RequestMapping("queryShop")
     public String queryBcategory(Model model, HttpServletRequest request){
-        String forword="shop";
+        String forword="admin/shop/shop";
         List<Shop> shopList= shopService.queryAllShop();
         model.addAttribute("shopList", shopList);
         request.setAttribute("shopList", shopList);
@@ -97,7 +91,7 @@ public class ShopController {
     public String shopUpdate(int sId,Model model ){
         Shop shop=shopService.queryShopById( sId );
         model.addAttribute("shop",shop);
-        String forword="shop_update";
+        String forword="admin/shop/shop_update";
         return forword;
     }
 
@@ -110,7 +104,7 @@ public class ShopController {
     public String shopUpdate(Shop shop,Model model){
         int rows=shopService.updateShop( shop );
         model.addAttribute( "rows",rows );
-        return "shop_update_result";
+        return "admin/shop/shop_update_result";
     }
 
     /**
@@ -122,7 +116,26 @@ public class ShopController {
     public String deleteShop(int sId,Model model){
         int rows=shopService.deleteShop( sId );
         model.addAttribute("rows", rows);
-        return "shop_delete_result";
+        return "admin/shop/shop_delete_result";
+    }
+
+    /**
+     * 兑换商品
+     * @param cId
+     * @param sPrice
+     * @param model
+     * @return
+     */
+    @RequestMapping("conversionShop")
+    public String conversionShop(int cId,int sPrice,Model model){
+        int grade=shopService.getGradeFromCus(cId);
+        if (grade<sPrice){
+            return "customer/shop/conShop_exit";
+        }else {
+            int rows=shopService.minGrade(sPrice,cId);
+            model.addAttribute("rows",rows);
+            return "customer/shop/conShop_result";
+        }
     }
 
 }

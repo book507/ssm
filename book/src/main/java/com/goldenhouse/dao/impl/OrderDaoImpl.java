@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
+
 @Repository("orderDao")
 public class OrderDaoImpl implements IOrderDao {
     @Autowired
@@ -52,4 +54,25 @@ public class OrderDaoImpl implements IOrderDao {
     public int updateOrderOfSta(Order order) {
         return orderMapper.updateOrderOfSta( order );
     }
+
+    /**
+     * 根据书籍ID查询订单信息
+     * @param bId
+     * @return
+     */
+    @Override
+    public List<Order> queryOrderBybookId(int bId) {
+        return orderMapper.queryOrderBybookId( bId );
+    }
+
+    /**
+     * 用户查看个人所有订单
+     * @param cId
+     * @return
+     */
+    @Override
+    public List<Map> queryOrderOfCus(Integer cId) {
+        return orderMapper.queryOrderOfCus(cId);
+    }
+
 }

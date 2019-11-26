@@ -36,12 +36,12 @@ public class SugServiceImpl implements ISugService {
     }
 
     /**
-     * 增加意见
-     * @param sug
+     * 用户提交意见
      * @return
      */
     @Override
-    public int addSug(Sug sug) {
-        return iSugDao.addSug( sug );
+    public int cusSubmitSug(Sug sug) {
+        return iSugDao.cusSubmitSug(sug);
     }
+
 }

@@ -1,27 +1,26 @@
 package com.goldenhouse.entity;
 
+import org.apache.ibatis.type.Alias;
 /**
  *用户实体类
  */
-
-import org.apache.ibatis.type.Alias;
-
 @Alias("customer")
 public class Customer {
+
     private Integer cId;             //用户名ID
-    private String cNo;             //用户名
-    private String cPwd;           //密码
-    private String cSfz;          //身份证号
-    private String cName;        //姓名
-    private Integer cSex;       //性别  0:男  1:女
-    private String cTel;       //电话号码
-    private String cAddress;  //收货地址
-    private Integer cGrade;  //积分
+    private String cNo;              //用户名
+    private String cPwd;             //密码
+    private String cSfz;             //身份证号
+    private String cName;            //姓名
+    private String cSex;             //性别  0:男  1:女
+    private String cTel;             //电话号码
+    private String cAddress;         //收货地址
+    private Integer cGrade;          //积分
 
     public Customer() {
     }
 
-    public Customer(Integer cId, String cNo, String cPwd, String cSfz, String cName, Integer cSex, String cTel, String cAddress, Integer cGrade) {
+    public Customer(Integer cId, String cNo, String cPwd, String cSfz, String cName, String cSex, String cTel, String cAddress, Integer cGrade) {
         this.cId=cId;
         this.cNo = cNo;
         this.cPwd = cPwd;
@@ -73,11 +72,11 @@ public class Customer {
         this.cName = cName;
     }
 
-    public Integer getcSex() {
+    public String getcSex() {
         return cSex;
     }
 
-    public void setcSex(Integer cSex) {
+    public void setcSex(String cSex) {
         this.cSex = cSex;
     }
 

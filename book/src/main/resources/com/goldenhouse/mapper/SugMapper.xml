@@ -3,23 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.SugMapper">
+
     <!--查询所有意见信息-->
     <select id="queryAllSug" resultType="sug">
-        select sug_id as sugId,
+<![CDATA[
+       select  sug_id as sugId,
                c_id as cId,
                sug_what as sugWhat,
                sug_time as sugTime
         from t_sug
+]]>
     </select>
 
     <!--根据意见ID删除该意见信息-->
     <delete id="deleteSug" parameterType="int">
-        delete from t_sug where sug_id=#{sugId}
+<![CDATA[
+        delete from t_sug
+        where sug_id=#{sugId}
+]]>
     </delete>
 
     <!-- 增加意见-->
-    <insert id="addSug" parameterType="sug">
-        insert t_sug(c_id,sug_what,sug_time)  values(#{cId},#{sugWhat},#{sugTime})
+    <insert id="cusSubmitSug" parameterType="sug">
+        insert into t_sug(c_id,sug_what,sug_time)
+        values(#{cId},#{sugWhat},sysdate())
     </insert>
 
 

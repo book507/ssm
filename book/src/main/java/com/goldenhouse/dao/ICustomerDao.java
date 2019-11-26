@@ -2,9 +2,8 @@ package com.goldenhouse.dao;
 
 import com.goldenhouse.entity.Customer;
 
-/**
- * 用户数据访问对象
- */
+import java.util.List;
+
 public interface ICustomerDao {
 
     /**
@@ -49,6 +48,18 @@ public interface ICustomerDao {
      */
     int updateCustomerPass(Customer customer);
 
+    /**
+     * 根据用户名或身份证号查询是否存在该用户
+     * @param customer
+     * @return
+     */
+    List<Customer> queryCustomerByCno(Customer customer);
 
+    /**
+     * 根据用户id和密码，查询是否存在该用户
+     * @param
+     * @return
+     */
+    Customer queryCusByCid(Customer customer);
 
 }

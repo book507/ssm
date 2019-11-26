@@ -7,6 +7,7 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("shop")
 public class Shop {
+
     //商品id
     private Integer sId;
     //商品名称

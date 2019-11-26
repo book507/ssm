@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service("customerService")
-
 public class CustomerServiceImpl implements ICustomerService {
 
     @Autowired
@@ -23,7 +24,6 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public int registerCustomer(Customer customer) {
-
         return customerDao.registerCustomer(customer);
     }
 
@@ -34,7 +34,6 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public Customer customerLogIn(Customer customer) {
-
         return customerDao.customerLogIn(customer);
     }
 
@@ -45,7 +44,6 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public int findCustomerPassword(Customer customer) {
-
         return customerDao.findCustomerPassword(customer);
     }
 
@@ -56,7 +54,6 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public Customer customerLookInfo(int cId) {
-
         return customerDao.customerLookInfo(cId);
     }
 
@@ -67,7 +64,6 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public int updateCustomerInfo(Customer customer) {
-
         return customerDao.updateCustomerInfo(customer);
     }
 
@@ -78,8 +74,29 @@ public class CustomerServiceImpl implements ICustomerService {
      */
     @Override
     public int updateCustomerPass(Customer customer) {
-
         return customerDao.updateCustomerPass(customer);
     }
+
+    /**
+     * 根据用户名或身份证号查询是否存在该用户
+     * @param customer
+     * @return
+     */
+    @Override
+    public List<Customer> queryCustomerByCno(Customer customer) {
+        return customerDao.queryCustomerByCno( customer );
+    }
+
+    /**
+     * 根据用户id和密码，查询是否存在该用户
+     * @param
+     * @return
+     */
+    @Override
+    public Customer queryCusByCid(Customer customer) {
+        return customerDao.queryCusByCid( customer );
+    }
+
+
 }
 

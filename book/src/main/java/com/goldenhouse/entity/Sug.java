@@ -9,6 +9,7 @@ import java.util.Date;
  */
 @Alias("sug")
 public class Sug {
+
     //意见ID
     private Integer sugId;
 

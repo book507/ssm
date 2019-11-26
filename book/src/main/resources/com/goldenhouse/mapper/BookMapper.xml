@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.BookMapper">
+
     <!-- 查询所有书籍信息-->
     <select id="queryBook" resultType="book">
 <![CDATA[
@@ -17,9 +18,56 @@
 ]]>
         </select>
 
+    <!-- 根据书籍Id查询该书籍信息-->
+    <select id="queryBookById" resultType="book">
+<![CDATA[
+        select
+            b_id as bookId,
+            b_name as bookName,
+            b_price as bookPrice,
+            b_what as bookWhat,
+            bs_id as bsId
+        from
+            t_book
+            where b_id=#{bookId}
+]]>
+        </select>
+
+    <!-- 查询所有书籍信息关联书籍分类-->
+    <select id="queryBookOfAdmin"  resultMap="queryBookMap">
+<![CDATA[
+        select
+            b.b_id ,
+            b.b_name ,
+            b.b_price ,
+            b.b_what ,
+            bs.bs_name
+        from
+            t_book as b,
+            t_bs as bs
+        where
+          b.bs_id=bs.bs_id
+]]>
+        </select>
+
+    <resultMap id="queryBookMap" type="map">
+        <id property="bookId" column="b_id"></id>
+            <result property="bookId" column="b_id"></result>
+            <result property="bookName" column="b_name"></result>
+            <result property="bookPrice" column="b_price"></result>
+            <result property="bookWhat" column="b_what"></result>
+        <association property="booksort"  javaType="booksort">
+            <id property="bsId" column="bs_id"></id>
+            <result property="bsName" column="bs_name"></result>
+        </association>
+    </resultMap>
+
     <!-- 增加书籍信息-->
     <insert id="addBook" parameterType="book">
-        insert t_book(b_name,b_price,b_what,bs_id)  values(#{bookName},#{bookPrice},#{bookWhat},#{bsId})
+<![CDATA[
+        insert t_book(b_name,b_price,b_what,bs_id)
+        values(#{bookName},#{bookPrice},#{bookWhat},#{bsId})
+]]>
     </insert>
 
     <!-- 根据书籍分类ID删除书籍分类信息-->
@@ -32,7 +80,12 @@
     <!-- 根据书籍ID修改书籍信息-->
     <update id="updateBook" parameterType="book">
 <![CDATA[
-        update t_book set b_name=#{bookName},b_price=#{bookPrice},b_what=#{bookWhat},bs_id=#{bsId} where b_id=#{bookId}
+        update t_book
+        set b_name=#{bookName},
+            b_price=#{bookPrice},
+            b_what=#{bookWhat},
+            bs_id=#{bsId}
+        where b_id=#{bookId}
 ]]>
     </update>
 
@@ -45,12 +98,32 @@
             b_price as bookPrice,
             b_what as bookWhat,
             bs_id as bsId
-        from
-            t_book
+        from  t_book
         where
             bs_id=#{bsId}
 ]]>
         </select>
+
+    <!--关键字搜索书籍-->
+    <select id="keywordSearch" parameterType="book" resultMap="bookMap">
+    <![CDATA[
+        select
+          b_id,b_name,b_price,b_what
+        from
+           t_book
+        where
+           b_name
+        like
+           '%${bookName}%'
+    ]]>
+    </select>
+    <resultMap id="bookMap" type="map">
+        <id property="bookId" column="b_id"></id>
+        <result property="bookId" column="b_id"></result>
+        <result property="bookName" column="b_name"></result>
+        <result property="bookPrice" column="b_price"></result>
+        <result property="bookWhat" column="b_what"></result>
+    </resultMap>
 
 
 </mapper>

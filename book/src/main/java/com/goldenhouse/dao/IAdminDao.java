@@ -9,4 +9,5 @@ public interface IAdminDao {
      * @return
      */
     Admin loginAdmin(Admin admin);
+
 }

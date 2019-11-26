@@ -9,6 +9,7 @@ import java.util.List;
  */
 @Alias("cart")
 public class Cart {
+
     //购物车id
     private Integer gId;
     //用户id

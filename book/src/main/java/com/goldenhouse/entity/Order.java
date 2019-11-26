@@ -1,8 +1,11 @@
 package com.goldenhouse.entity;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * 订单信息实体类
  */
+@Alias("order")
 public class Order {
 
     //订单ID
@@ -15,16 +18,22 @@ public class Order {
     private Integer bId;
     //订单状态
     private Integer oSta;
+    //关联用户对象
+    private Customer customer;
+    //关联书本对象
+    private Book book;
 
     public Order() {
     }
 
-    public Order(Integer oId , String oNo , Integer cId , Integer bId , Integer oSta) {
+    public Order(Integer oId , String oNo , Integer cId , Integer bId , Integer oSta , Customer customer , Book book) {
         this.oId=oId;
         this.oNo=oNo;
         this.cId=cId;
         this.bId=bId;
         this.oSta=oSta;
+        this.customer=customer;
+        this.book=book;
     }
 
     public Integer getoId() {
@@ -67,6 +76,22 @@ public class Order {
         this.oSta=oSta;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer=customer;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book=book;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -75,6 +100,8 @@ public class Order {
                 ", cId=" + cId +
                 ", bId=" + bId +
                 ", oSta=" + oSta +
+                ", customer=" + customer +
+                ", book=" + book +
                 '}';
     }
 }

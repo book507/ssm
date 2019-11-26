@@ -3,10 +3,12 @@ package com.goldenhouse.mapper;
 
 
 import com.goldenhouse.entity.Shop;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface ShopMapper {
+
     /**
      * 查看所有积分商品列表
      * @return
@@ -40,5 +42,19 @@ public interface ShopMapper {
      * @return
      */
     Shop queryShopById(int sId);
+
+    /**
+     * 兑换前先查询出用户个人的积分
+     * @param cId
+     * @return
+     */
+    int getGradeFromCus(int cId);
+
+    /**
+     * 兑换成功后减去相应的积分
+     * @param sPrice
+     * @return
+     */
+    int minGrade(@Param("sPrice") int sPrice, @Param("cId") int cId);
 
 }

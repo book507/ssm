@@ -18,4 +18,5 @@ public class AdminDaoImpl implements IAdminDao {
     public Admin loginAdmin(Admin admin) {
         return adminMapper.loginAdmin( admin );
     }
+
 }

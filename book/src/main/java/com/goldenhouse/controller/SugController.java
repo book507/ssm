@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -24,11 +23,10 @@ public class SugController {
      * @return
      */
     @RequestMapping("queryAllSug")
-    public String queryAllSug(Model model, HttpServletRequest request){
-        String forword="sug";
+    public String queryAllSug(Model model){
+        String forword="admin/mailbox/sug";
         List<Sug> sugList= iSugService.queryAllSug();
         model.addAttribute("sugList", sugList);
-        request.setAttribute("sugList", sugList);
         return forword;
     }
 
@@ -40,7 +38,7 @@ public class SugController {
     public String deleteSug(int sugId,Model model){
         int rows=iSugService.deleteSug( sugId );
         model.addAttribute("rows", rows);
-        return "sug_delete_result";
+        return "admin/mailbox/sug_delete_result";
     }
 
     /**
@@ -48,11 +46,11 @@ public class SugController {
      * @param sug
      * @return
      */
-    @RequestMapping("addSug")
-    public String addSug(Sug sug,Model model){
-        int rows=iSugService.addSug( sug );
-        model.addAttribute( "rows",rows );
-        return "sug_add_result";
+    @RequestMapping("submitSug")
+    public String cusSubmitSug(Sug sug,Model model){
+        int rows=iSugService.cusSubmitSug(sug);
+        model.addAttribute("rows",rows);
+        return "customer/suggest/sug_submit_result";
     }
 
     /**
@@ -60,8 +58,9 @@ public class SugController {
      * @return
      */
     @RequestMapping("/cus_sug.action")
-    public String cusSugAction(){
-        String forword="cus_suggest";
+    public String cusSugAction(Integer cId,Model model){
+        model.addAttribute("cId",cId);
+        String forword="customer/suggest/cus_suggest";
         return forword;
     }
 

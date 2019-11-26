@@ -15,10 +15,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
             <value>root</value>
         </property>
         <property name="password">
-            <value>123456</value>
+            <value></value>
         </property>
         <property name="url">
-            <value>jdbc:mysql://localhost:3306/goldenhouse?useUnicode=true&amp;characterEncoding=utf8</value>
+            <value>jdbc:mysql://localhost:3306/book?useUnicode=true&amp;characterEncoding=utf8</value>
         </property>
         <!-- 初始化连接数量-->
         <property name="initialSize">
@@ -101,4 +101,18 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <!--启用spring注解,配置dao、service扫描包 -->
     <context:component-scan base-package="com.goldenhouse.dao"/>
     <context:component-scan base-package="com.goldenhouse.service"/>
+
+    <!-- 店铺打烊时,所有用户页面或请求均不可以访问.特殊页面或请求URL除外.
+     下列bean用来配置打烊时能够看到的页面
+    -->
+    <bean id="excludeMappings" class="java.util.ArrayList">
+        <constructor-arg index="0" type="java.util.Collection">
+            <list>
+                <value>/WEB-INF/account/customer_changepwd.jsp</value>
+                <value>/customer/cus_index.action</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
 </beans>

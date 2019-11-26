@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goldenhouse.mapper.CartMapper">
+    <!--查看个人购物车所有物品-->
+    <select id="queryBookOfCart" parameterType="Integer" resultMap="cartResultMap">
+    <![CDATA[
+           select g.g_id,g.c_id,g.b_id,
+           b.b_name,b.b_price,
+           b.b_what,bs.bs_name
+           from
+           t_gwc as g,t_cus as c,t_book as b,t_bs as bs
+           where
+           g.c_id=c.c_id and g.b_id=b.b_id and b.bs_id=bs.bs_id
+           and g.c_id=#{cId}
+        ]]>
+    </select>
+    <resultMap id="cartResultMap" type="map">
+        <id property="gId" column="g_id"></id>
+        <result property="gId" column="g_id"></result>
+        <result property="cId" column="c_id"></result>
+        <result property="bId" column="b_id"></result>
+        <association property="customer" javaType="customer">
+            <id property="cId" column="c_id"></id>
+        </association>
+        <collection property="books" ofType="book">
+            <id property="bookId" column="b_id"></id>
+            <result property="bookName" column="b_name"></result>
+            <result property="bookPrice" column="b_price"></result>
+            <result property="bookWhat" column="b_what"></result>
+            <association property="booksort" javaType="booksort">
+                <id property="bsId" column="bs_id"></id>
+                <result property="bsName" column="bs_name"></result>
+            </association>
+        </collection>
+    </resultMap>
+    <!--根据购物车id删除书本-->
+    <delete id="deleteBookOfCart" parameterType="int">
+      <![CDATA[
+           delete from t_gwc where g_id=#{gId}
+        ]]>
+    </delete>
+
+    <!--根据用户id查询收藏夹所有书本id-->
+    <select id="queryBIdOfFavorite" parameterType="Integer" resultType="Integer">
+        select b_id as bId from t_fav where c_id=#{cId}
+    </select>
+
+    <!--根据购物车id查询出要添加到收藏夹的字段-->
+    <select id="getBC" parameterType="Integer" resultType="cart">
+        <![CDATA[
+             select c_id as cId,b_id as bId from t_gwc where g_id=#{gId}
+        ]]>
+    </select>
+
+    <!--根据收藏夹Id把书本添加到购物车-->
+    <insert id="addBookToFavorite" parameterType="Integer">
+        <![CDATA[
+            insert into t_fav(c_id,b_id)
+            values(#{cId},#{bId})
+        ]]>
+    </insert>
+
+    <!--结算时向订单中添加一条数据-->
+    <insert id="addBookToOrder" parameterType="Integer">
+        <![CDATA[
+            insert into t_order(o_no,c_id,b_id,o_sta)
+            values(FLOOR(100000 + (RAND() * 999999)),#{cId},#{bId},0)
+        ]]>
+    </insert>
+    <!--结算时向用户个人添加积分-->
+    <update id="updateGradeToCus" parameterType="Integer">
+        <![CDATA[
+            update t_cus set c_grade=(c_grade+10)
+            where c_id=#{cId}
+        ]]>
+    </update>
+    <!--结算时从购物车删除该书本-->
+    <delete id="deleteBookToCart" parameterType="Integer">
+        <![CDATA[
+            delete from t_gwc where g_id=#{gId}
+        ]]>
+    </delete>
+
+    <!--根据用户id和书本id查询该书存在用户个人的购物车里-->
+    <select id="queryByCIdByBId" parameterType="cart" resultType="cart">
+        select g_id from t_gwc where c_id=#{cId} and b_id=#{bId}
+    </select>
+
+
+</mapper>

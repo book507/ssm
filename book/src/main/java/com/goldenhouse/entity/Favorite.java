@@ -9,6 +9,7 @@ import java.util.List;
  */
 @Alias("favorite")
 public class Favorite {
+
     //收藏夹id
     private Integer fId;
     //用户id
@@ -21,6 +22,7 @@ public class Favorite {
 
     //收藏夹关联到书本属性
     private List<Book> books;
+
     public Favorite() {
     }
 

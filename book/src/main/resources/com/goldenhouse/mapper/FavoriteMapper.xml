@@ -3,39 +3,69 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.goldenhouse.mapper.FavoriteMapper">
+
     <!--根据收藏夹id删除书本-->
     <delete id="deleteBookOfFavorite" parameterType="int">
-        <![CDATA[
-           delete from t_fav where f_id=#{fId}
-        ]]>
+<![CDATA[
+        delete from t_fav
+        where f_id=#{fId}
+]]>
     </delete>
+
     <!--查看个人所有的收藏夹-->
     <select id="queryBookOfFavorite" parameterType="int" resultMap="favoriteResultMap1">
-        <![CDATA[
-           select
-           b.b_name,b.b_price,
-           b.b_what,bs_name
-           from
-           t_fav as f,t_cus as c,t_book as b,t_bs as bs
-           where
-           f.c_id=c.c_id and f.b_id=b.b_id and b.bs_id=bs.bs_id
-           and f.c_id=#{cId}
-        ]]>
+<![CDATA[
+        select
+        f.f_id,f.c_id,f.b_id,
+        b.b_name,b.b_price,
+        b.b_what,bs_name
+        from
+        t_fav as f,t_cus as c,t_book as b,t_bs as bs
+        where
+        f.c_id=c.c_id and f.b_id=b.b_id and b.bs_id=bs.bs_id
+        and f.c_id=#{cId}
+]]>
     </select>
+
     <resultMap id="favoriteResultMap1" type="map">
         <id property="fId" column="f_id"></id>
+        <result property="fId" column="f_id"></result>
+        <result property="cId" column="c_id"></result>
+        <result property="bId" column="b_id"></result>
         <association property="customer" javaType="customer">
             <id property="cId" column="c_id"></id>
         </association>
         <collection property="books" ofType="book">
-            <id property="bId" column="b_id"></id>
+            <id property="bookId" column="b_id"></id>
             <result property="bookName" column="b_name"></result>
             <result property="bookPrice" column="b_price"></result>
             <result property="bookWhat" column="b_what"></result>
-            <association property="bcategory" javaType="bcategory">
+            <association property="booksort" javaType="booksort">
                 <id property="bsId" column="bs_id"></id>
                 <result property="bsName" column="bs_name"></result>
             </association>
         </collection>
     </resultMap>
+
+    <!--根据用户id查询购物车所有书本id-->
+    <select id="queryBIdOfCart" parameterType="Integer" resultType="Integer">
+<![CDATA[
+        select b_id as bId from t_gwc where c_id=#{cId}
+]]>
+    </select>
+
+    <!--根据收藏夹id查询出要添加到购物车的字段-->
+    <select id="getBC" parameterType="Integer" resultType="favorite">
+<![CDATA[
+             select c_id as cId,b_id as bId from t_fav where f_id=#{fId}
+]]>
+    </select>
+    <!--根据收藏夹Id把书本添加到购物车-->
+    <insert id="addBookToCart" parameterType="Integer">
+<![CDATA[
+            insert into t_gwc(c_id,b_id)
+            values(#{cId},#{bId})
+]]>
+    </insert>
+
 </mapper>

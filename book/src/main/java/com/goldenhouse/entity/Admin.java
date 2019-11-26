@@ -7,6 +7,7 @@ import org.apache.ibatis.type.Alias;
  */
 @Alias("admin")
 public class Admin {
+
     //管理员ID
     private Integer adminId;
     //管理员账号名

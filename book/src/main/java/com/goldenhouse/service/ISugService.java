@@ -5,6 +5,7 @@ import com.goldenhouse.entity.Sug;
 import java.util.List;
 
 public interface ISugService {
+
     /**
      * 根据意见ID删除该意见信息
      * @param sugId
@@ -19,9 +20,9 @@ public interface ISugService {
     List<Sug> queryAllSug();
 
     /**
-     * 增加意见信息
-     * @param sug
+     * 用户提交意见
      * @return
      */
-    int addSug(Sug sug);
+    int cusSubmitSug(Sug sug);
+
 }

@@ -1,6 +1,8 @@
 package com.goldenhouse.controller;
 
+import com.goldenhouse.entity.Booksort;
 import com.goldenhouse.entity.Customer;
+import com.goldenhouse.service.IBooksortService;
 import com.goldenhouse.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,10 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-/**
- * 用户控制层
- */
+import java.util.List;
 
 @Controller
 @RequestMapping("customer")
@@ -27,26 +26,82 @@ public class CustomerController {
     @Qualifier("customerService")
     private ICustomerService customerService;
 
+    @Autowired
+    @Qualifier("booksortService")
+    private IBooksortService iBooksortService;
+
+    /**
+     * 用户跳转到忘记密码页面
+     * @return
+     */
+    @RequestMapping("/customer_findpwd.action")
+    public String customerFindpwd(){
+        String forword="customer/account/customer_findpwd";
+        return forword;
+    }
+
+    /**
+     * 用户跳转到注册页面
+     * @return
+     */
+    @RequestMapping("/customer_register.action")
+    public String customerRegister(){
+        String forword="customer/account/customer_register";
+        return forword;
+    }
+
+    /**
+     * 用户跳转到修改密码页面
+     * @return
+     */
+    @RequestMapping("/customer_updatepwd.action")
+    public String customerChangepwd(int cId,Model model){
+        model.addAttribute( "cId",cId );
+        String forword="customer/account/customer_updatepwd";
+        return forword;
+    }
+
+    /**
+     * 用户跳转到主页面
+     * @return
+     */
+    @RequestMapping("/cus_index.action")
+    public String cusIndex(Model model){
+        List<Booksort> booksortList=iBooksortService.queryBooksort();//加载书籍分类
+        model.addAttribute( "booksortList", booksortList);
+        String forword="customer/cus_index";
+        return forword;
+    }
+
     /**
      * 用户注册
-     *
      * @param customer
      * @return
      */
     @RequestMapping("register")
     public String registerCustomer(Customer customer,Model model) {
-        int rows = customerService.registerCustomer(customer);
-        model.addAttribute( "rows",rows );
-        return "customer_result";
+        int rows=-1;
+        List<Customer> customerList= customerService.queryCustomerByCno( customer );
+        if(customerList.isEmpty()){
+            rows = customerService.registerCustomer(customer);
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_register_result";
+        }else if(customerList!=null){
+            rows=0;
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_register_result";
+        }else{
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_register_result";
+        }
+
     }
 
     /**
      * 用户登录
-     *
      * @param customer
      * @return
      */
-
     @RequestMapping("login")
     public String customerLogIn(Customer customer, HttpSession session, HttpServletRequest request, Model model) {
         System.out.println( customer.toString() );
@@ -58,28 +113,26 @@ public class CustomerController {
             session.setAttribute("username", cus.getcNo());
             session.setAttribute("password",cus.getcPwd());
             model.addAttribute("customer", cus);
-            return "cus_index";
+
+            List<Booksort> booksortList=iBooksortService.queryBooksort();//加载书籍分类
+            model.addAttribute( "booksortList", booksortList);
+
+            return "customer/cus_index";
         } else {
-            return "customer_login_failure";
+            return "customer/account/customer_login_failure";
         }
     }
 
     /**
      * 用户找回密码
-     *
      * @param customer
      * @return
      */
     @RequestMapping("findPass")
-    public String findCustomerPassword(Customer customer) {
+    public String findCustomerPassword(Customer customer ,Model model) {
         int rows = customerService.findCustomerPassword(customer);
-        if (rows > 0) {
-            return "reset_success";
-        } else if (rows == 0) {
-            return "reset_failure";
-        } else {
-            return "occur_error";
-        }
+        model.addAttribute( "rows",rows );
+        return "customer/account/customer_findpwd_result";
     }
 
     /**
@@ -90,15 +143,13 @@ public class CustomerController {
      */
     @RequestMapping("lookInfo")
     public String customerLookInfo(int cId, Model model) {
-
         Customer customer = customerService.customerLookInfo(cId);
         if (customer != null) {
             model.addAttribute("customer", customer);
-            return "cus_info";
+            return "customer/info/cus_info";
         } else {
-            return "occur_error";
+            return "customer/occur_error";
         }
-
     }
 
     /**
@@ -112,11 +163,10 @@ public class CustomerController {
         Customer customer = customerService.customerLookInfo(cId);
         if (customer != null) {
             model.addAttribute("customer", customer);
-            return "cus_editinfo";
+            return "customer/info/cus_editinfo";
         } else {
-            return "occur_error";
+            return "customer/occur_error";
         }
-
     }
 
     /**
@@ -126,14 +176,13 @@ public class CustomerController {
      */
     @RequestMapping("updateInfo")
     public String updateCustomerInfo(Customer customer){
-
         int rows=customerService.updateCustomerInfo(customer);
         if (rows > 0) {
-            return "customer_update_info_success";
+            return "customer/info/customer_update_info_success";
         } else if (rows == 0) {
-            return "customer_update_info_failure";
+            return "customer/info/customer_update_info_failure";
         } else {
-            return "occur_error";
+            return "customer/occur_error";
         }
     }
 
@@ -143,16 +192,31 @@ public class CustomerController {
      * @return
      */
     @RequestMapping("updatePass")
-    public String updateCustomerPass(Customer customer){
-
-        int rows=customerService.updateCustomerPass(customer);
-        if (rows > 0) {
-            return "customer_update_pass_success";
-        } else if (rows == 0) {
-            return "customer_update_pass_failure";
-        } else {
-            return "occur_error";
+    public String updateCustomerPass(Customer customer,String cNPwd,Model model){
+        int rows=-1;
+        System.out.println( "************************************1" );
+        System.out.println( customer );
+        System.out.println( cNPwd );
+        System.out.println( "************************************1" );
+        Customer cus=customerService.queryCusByCid(customer);
+        System.out.println( cus );
+        if( cus!=null){
+            customer.setcPwd( cNPwd );
+            System.out.println( "************************************2" );
+            System.out.println( customer );
+            System.out.println( "************************************2" );
+            rows=customerService.updateCustomerPass(customer);
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_updatepwd_result";
+        }else if(cus==null){
+            rows=0;
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_updatepwd_result";
+        }else {
+            model.addAttribute( "rows",rows );
+            return "customer/account/customer_updatepwd_result";
         }
+
     }
 
     /**
@@ -166,4 +230,6 @@ public class CustomerController {
         session.invalidate();
         return "redirect:customer_logout_success";
     }
+
+
 }

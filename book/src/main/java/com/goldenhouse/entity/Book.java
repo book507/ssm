@@ -2,8 +2,6 @@ package com.goldenhouse.entity;
 
 import org.apache.ibatis.type.Alias;
 
-import java.util.List;
-
 //书籍信息实体类
 @Alias( "book" )
 public class Book {
@@ -23,18 +21,18 @@ public class Book {
     private  Integer bsId;
 
     //书籍属性外键关联到书籍分类
-    private Bcategory bcategory;
+    private Booksort booksort;
 
     public Book() {
     }
 
-    public Book(Integer bookId, String bookName, String bookPrice, String bookWhat, Integer bsId, Bcategory bcategory) {
+    public Book(Integer bookId, String bookName, String bookPrice, String bookWhat, Integer bsId, Booksort booksort) {
         this.bookId = bookId;
         this.bookName = bookName;
         this.bookPrice = bookPrice;
         this.bookWhat = bookWhat;
         this.bsId = bsId;
-        this.bcategory = bcategory;
+        this.booksort=booksort;
     }
 
     public Integer getBookId() {
@@ -77,12 +75,12 @@ public class Book {
         this.bsId = bsId;
     }
 
-    public Bcategory getBcategory() {
-        return bcategory;
+    public Booksort getBooksort() {
+        return booksort;
     }
 
-    public void setBcategory(Bcategory bcategory) {
-        this.bcategory = bcategory;
+    public void setBooksort(Booksort booksort) {
+        this.booksort=booksort;
     }
 
     @Override
@@ -93,7 +91,7 @@ public class Book {
                 ", bookPrice='" + bookPrice + '\'' +
                 ", bookWhat='" + bookWhat + '\'' +
                 ", bsId=" + bsId +
-                ", bcategory=" + bcategory +
+                ", booksort=" + booksort +
                 '}';
     }
 }

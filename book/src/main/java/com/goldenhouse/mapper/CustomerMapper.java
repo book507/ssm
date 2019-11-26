@@ -2,7 +2,10 @@ package com.goldenhouse.mapper;
 
 import com.goldenhouse.entity.Customer;
 
+import java.util.List;
+
 public interface CustomerMapper {
+
     /**
      * 用户注册的Mapper接口
      * @param customer
@@ -44,4 +47,19 @@ public interface CustomerMapper {
      * @return
      */
     int updateCustomerPass(Customer customer);
+
+    /**
+     * 根据用户名或身份证号查询是否存在该用户
+     * @param customer
+     * @return
+     */
+    List<Customer> queryCustomerByCno(Customer customer);
+
+
+    /**
+     * 根据用户id和密码，查询是否存在该用户
+     * @param
+     * @return
+     */
+    Customer queryCusByCid(Customer customer);
 }

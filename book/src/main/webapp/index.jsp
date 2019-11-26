@@ -7,7 +7,6 @@
 </head>
 <body>
 
-
 <div id="Layer1" style="position:absolute; width:100%; height:100%; z-index:-1">
     <img src="images/wall.jpg" height="100%" width="100%"/>
 </div>
@@ -15,7 +14,7 @@
     <div class="form-group">
         <label for="cNo" class="col-sm-2 control-label" style="color: #FCFCFC;">用户名</label>
         <div style="float: right;">
-            <button type="button" class="btn btn-success"  onclick="window.location.href='admin.jsp'">我是管理员</button>
+            <button type="button" class="btn btn-success"  onclick="window.location.href='/admin/admin_login.action'">我是管理员</button>
         </div>
         <div class="col-sm-10">
         <input type="text" class="form-control" id="cNo" name="cNo" required="required"
@@ -32,20 +31,17 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <input type="submit" class="btn btn-danger" value="登陆">
-            <%--<button type="submit" class="btn btn-danger" >登录</button>--%>
             &nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-danger" onclick="window.location.href='customer_findpass.jsp'">忘记密码</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='customer/customer_findpwd.action'">忘记密码</button>
             &nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-danger" onclick="window.location.href='customer_register.jsp'">注册账号</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='customer/customer_register.action'">注册账号</button>
 
         </div>
         <br />
         <div class="col-sm-offset-2 col-sm-10">
         </div>
         <br />
-
         <br>
-
     </div>
 </form>
 </body>

@@ -1,7 +1,6 @@
 package com.goldenhouse.controller;
 
 import com.goldenhouse.entity.Admin;
-import com.goldenhouse.entity.Bcategory;
 import com.goldenhouse.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,16 +17,27 @@ public class AdminController {
         private IAdminService IAdminService;
 
         /**
-         * 管理员登录
+         * 跳转到管理员登录页面
+         * @return
          */
-        @RequestMapping("Login")
+        @RequestMapping("/admin_login.action")
+        public String adminLogin(){
+            return "admin/admin_login";
+        }
+
+
+        /**
+         * 管理员登录
+         * @return
+         */
+        @RequestMapping("login")
         public String adminLogin(Admin admin, Model model) {
             Admin admin1=IAdminService.loginAdmin( admin );
             if (admin1 != null) {
                 model.addAttribute("admin", admin1.getAdminId());
-                return "admin_backstage";
+                return "admin/admin_index";
             } else {
-                return "customer_login_failure";
+                return "admin/admin_login_failure";
             }
         }
 
@@ -35,9 +45,9 @@ public class AdminController {
          * 跳转到管理员后台主页面
          * @return
          */
-        @RequestMapping("/admin_backstage.action")
-        public String adminBackstage(){
-            String forword="admin_backstage";
+        @RequestMapping("/admin_index.action")
+        public String adminIndex(){
+            String forword="admin/admin_index";
             return forword;
         }
 

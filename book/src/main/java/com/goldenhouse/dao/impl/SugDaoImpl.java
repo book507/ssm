@@ -36,12 +36,12 @@ public class SugDaoImpl implements ISugDao {
     }
 
     /**
-     * 增加意见
-     * @param sug
+     * 用户提交意见
      * @return
      */
     @Override
-    public int addSug(Sug sug) {
-        return sugMapper.addSug( sug );
+    public int cusSubmitSug(Sug sug) {
+        return sugMapper.cusSubmitSug(sug);
     }
+
 }

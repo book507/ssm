@@ -64,4 +64,26 @@ public class ShopDaoImpl implements IShopDao {
     public int deleteShop(int sId) {
         return shopMapper.deleteShop( sId );
     }
+
+    /**
+     * 兑换前先查询出用户个人的积分
+     * @param cId
+     * @return
+     */
+    @Override
+    public int getGradeFromCus(int cId) {
+        return shopMapper.getGradeFromCus(cId);
+    }
+
+    /**
+     * 兑换成功后减去相应的积分
+     * @param sPrice
+     * @param cId
+     * @return
+     */
+    @Override
+    public int minGrade(int sPrice,int cId) {
+        return shopMapper.minGrade(sPrice,cId);
+    }
+
 }

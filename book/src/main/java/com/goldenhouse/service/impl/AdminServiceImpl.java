@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("adminService")
 public class AdminServiceImpl implements IAdminService {
+
     @Autowired
     @Qualifier("adminDao")
     private IAdminDao IAdminDao;
@@ -21,4 +22,5 @@ public class AdminServiceImpl implements IAdminService {
     public Admin loginAdmin(Admin admin) {
         return IAdminDao.loginAdmin(admin);
     }
+
 }

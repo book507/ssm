@@ -1,7 +1,6 @@
 package com.goldenhouse.mapper;
 
 import com.goldenhouse.entity.Sug;
-
 import java.util.List;
 
 public interface SugMapper {
@@ -20,10 +19,9 @@ public interface SugMapper {
     List<Sug> queryAllSug();
 
     /**
-     * 增加意见信息
-     * @param sug
+     * 用户提交意见
      * @return
      */
-    int addSug(Sug sug);
+    int cusSubmitSug(Sug sug);
 
 }

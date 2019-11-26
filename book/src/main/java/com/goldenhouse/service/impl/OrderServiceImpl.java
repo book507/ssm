@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 @Service("orderService")
 public class OrderServiceImpl implements IOrderService {
 
@@ -52,6 +54,26 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public int updateOrderOfSta(Order order) {
         return iOrderDao.updateOrderOfSta( order );
+    }
+
+    /**
+     * 根据书籍ID查询订单信息
+     * @param bId
+     * @return
+     */
+    @Override
+    public List<Order> queryOrderBybookId(int bId) {
+        return iOrderDao.queryOrderBybookId( bId );
+    }
+
+    /**
+     * 用户查看个人所有订单
+     * @param cId
+     * @return
+     */
+    @Override
+    public List<Map> queryOrderOfCus(Integer cId) {
+        return iOrderDao.queryOrderOfCus(cId);
     }
 
 }

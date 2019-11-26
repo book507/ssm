@@ -2,11 +2,10 @@ package com.goldenhouse.service;
 
 import com.goldenhouse.entity.Customer;
 
-/**
- * 业务层接口
- */
+import java.util.List;
 
 public interface ICustomerService {
+
     /**
      * 用户注册业务
      * @param customer
@@ -48,4 +47,19 @@ public interface ICustomerService {
      * @return
      */
     int updateCustomerPass(Customer customer);
+
+    /**
+     * 根据用户名或身份证号查询是否存在该用户
+     * @param customer
+     * @return
+     */
+    List<Customer> queryCustomerByCno(Customer customer);
+
+    /**
+     * 根据用户id和密码，查询是否存在该用户
+     * @param
+     * @return
+     */
+    Customer queryCusByCid(Customer customer);
+
 }
