@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("admin")
 public class AdminController {
@@ -50,6 +53,31 @@ public class AdminController {
             String forword="admin/admin_index";
             return forword;
         }
+
+    /**
+     * 店铺打烊
+     * @param
+     * @return
+     */
+    @RequestMapping("closegdh")
+    public String closegdh(ServletRequest servletRequest,Model model){
+        int rows=-1;
+        HttpServletRequest request=(HttpServletRequest) servletRequest;
+        //是否是打烊
+        Object sign=  request.getServletContext().getAttribute( "OperatingState" );
+        if(sign==null){
+            //打烊
+            servletRequest.getServletContext().setAttribute( "OperatingState",1 );
+            rows=1;
+            model.addAttribute( "rows",rows );
+            return "/admin/admin_closegdh_result";
+        }else{
+            servletRequest.getServletContext().removeAttribute( "OperatingState" );
+            rows=0;
+            model.addAttribute( "rows",rows );
+            return "/admin/admin_closegdh_result";
+        }
+    }
 
 }
 

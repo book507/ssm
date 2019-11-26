@@ -74,7 +74,7 @@
                                 <c:out value="${order.getbId()}"/>
                             </td>
                             <td>
-                                <c:out value="${order.getoSta()}"/>
+                                    ${order.getoSta()==0?'待发货':order.getoSta()==1?'已发货':order.getoSta()==2?'交易成功':order.getoSta()==3?'已受理':order.getoSta()==4?'未受理':order.getoSta()==5?'已退货':order.getoSta()==6?'已退款':'未知状态'}
                             </td>
                             <td>
                                 <a href="order_update.action?oId=${order.getoId()}">修改</a>

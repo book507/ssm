@@ -102,14 +102,28 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <context:component-scan base-package="com.goldenhouse.dao"/>
     <context:component-scan base-package="com.goldenhouse.service"/>
 
+
     <!-- 店铺打烊时,所有用户页面或请求均不可以访问.特殊页面或请求URL除外.
      下列bean用来配置打烊时能够看到的页面
     -->
     <bean id="excludeMappings" class="java.util.ArrayList">
         <constructor-arg index="0" type="java.util.Collection">
             <list>
-                <value>/WEB-INF/account/customer_changepwd.jsp</value>
-                <value>/customer/cus_index.action</value>
+                <value>/closegdh.jsp</value>
+                <value>/customer/customer_register.action</value>
+                <value>/customer/customer_findpwd.action</value>
+                <value>/WEB-INF/customer/account/customer_findpwd.jsp</value>
+                <value>/WEB-INF/customer/account/customer_register.jsp</value>
+                <value>/customer/register</value>
+                <value>/customer/findPass</value>
+                <value>/WEB-INF/customer/account/customer_register_result.jsp</value>
+                <value>/WEB-INF/customer/account/customer_findpwd_result.jsp</value>
+                <value>/customer/account/customer_findpwd_result</value>
+                <value>/customer/login</value>
+                <value>/customer/images/tninght.jpg</value>
+                <value>/images/tninght.jpg</value>
+
+
             </list>
         </constructor-arg>
     </bean>

@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class CheckOperatingStateFilter implements Filter {
 
-
     /**
      * 排除被拦截的路径
      */
@@ -37,7 +36,9 @@ public class CheckOperatingStateFilter implements Filter {
     public void doFilter(ServletRequest servletRequest , ServletResponse servletResponse , FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request=(HttpServletRequest) servletRequest;
         String requestPath=request.getRequestURI();//请求路径
+        System.out.println( "**************拦截请求的路径**************" );
         System.out.println(requestPath);
+        System.out.println( "******************************************" );
         if (!"/".equals( contextPath )) {
             requestPath=requestPath.replace( contextPath,"" );
         }
@@ -55,9 +56,11 @@ public class CheckOperatingStateFilter implements Filter {
         }
 
         //跳转到打烊页面
-        servletRequest.getRequestDispatcher( "/WEB-INF/").forward( servletRequest,servletResponse );
+        servletRequest.getRequestDispatcher( "/closegdh.jsp").forward( servletRequest,servletResponse );
+
         //打烊
-        //servletRequest.getServletContext().setAttribute( "OperatingState",1 );
+       // servletRequest.getServletContext().setAttribute( "OperatingState",1 );
+
         //取消打烊
         //servletRequest.getServletContext().removeAttribute( "OperatingState" );
     }

@@ -61,6 +61,7 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -73,13 +74,7 @@
     <filter-mapping>
         <filter-name>CheckOperatingStateFilter</filter-name>
         <url-pattern>/WEB-INF/customer/*</url-pattern>
-        <url-pattern>/book/*</url-pattern>
-        <url-pattern>/booksort/*</url-pattern>
         <url-pattern>/customer/*</url-pattern>
-        <url-pattern>/favorite/*</url-pattern>
-        <url-pattern>/order/*</url-pattern>
-        <url-pattern>/shop/*</url-pattern>
-        <url-pattern>/sug/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

@@ -47,7 +47,7 @@
         <div class="center-block" style="text-align: center;padding-top:10px ;">
             <button type="button" class="btn btn-primary button01" onclick="window.location.href='/shop/queryShop'">积分商城</button>
             <button type="button" class="btn btn-danger button01"  onclick="window.location.href='/sug/queryAllSug'">小屋信箱</button>
-            <button type="button" class="btn btn-primary button01" onclick="window.location.href='#'">小屋打烊</button>
+            <button type="button" class="btn btn-primary button01" onclick="window.location.href='/admin/closegdh'">开张/打烊</button>
         </div>
     </tr>
 
