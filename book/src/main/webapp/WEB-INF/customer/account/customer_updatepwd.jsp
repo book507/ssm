@@ -5,20 +5,16 @@
     <script type="text/javascript">
         function yz(){
             if(document.form.cNPwd.value!=document.form.rcNPwd.value){
-                alert("输入的两次密码不一致！");
-                return false;
-            }
-            if(document.form.cPwd.value==""){
-                alert("请输入原密码！");
-                return false;
-            }
-            if(document.form.cNPwd.value==""||document.form.rcNPwd.value==""){
-                alert("请输入新密码！");
+                alert("输入的新密码与确认密码不一致！");
                 return false;
             }
             if(document.form.cPwd.value==document.form.cNPwd.value){
                 alert("输入的原密码与新密码不能相同！");
                 return false;
+            }
+            if(document.form.cNPwd.value==document.form.rcNPwd.value&&document.form.cPwd.value!=document.form.cNPwd.value){
+                alert("确认要修改您的密码？");
+                return true;
             }
         }
     </script>
