@@ -101,7 +101,21 @@
     </p>
 
     <p align="center">
-        订单状态：<input id="oSta" type="text" name="oSta" value="${requestScope.order.oSta}"  />
+        订单状态：<%--<input id="oSta" type="text" name="oSta" value="${requestScope.order.oSta}"  />--%>
+
+
+        <select name="oSta"  >
+            <option value="0" ${requestScope.order.oSta == 0?"selected":""}> 待发货 </option>
+            <option value="1" ${requestScope.order.oSta == 1?"selected":""}> 已发货 </option>
+            <option value="2" ${requestScope.order.oSta == 2?"selected":""}> 交易成功 </option>
+            <option value="3" ${requestScope.order.oSta == 3?"selected":""}> 已受理 </option>
+            <option value="4" ${requestScope.order.oSta == 4?"selected":""}> 未受理 </option>
+            <option value="5" ${requestScope.order.oSta == 5?"selected":""}> 已退货 </option>
+            <option value="6" ${requestScope.order.oSta == 6?"selected":""}> 已退款 </option>
+
+        </select>
+
+
     </p>
     <p align="center">
         <input type="submit" class="button" value="确认修改" onclick="yz"/>

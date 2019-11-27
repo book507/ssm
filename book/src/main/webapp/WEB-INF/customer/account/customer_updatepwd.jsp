@@ -6,7 +6,20 @@
         function yz(){
             if(document.form.cNPwd.value!=document.form.rcNPwd.value){
                 alert("输入的两次密码不一致！");
-                return false;}
+                return false;
+            }
+            if(document.form.cPwd.value==""){
+                alert("请输入原密码！");
+                return false;
+            }
+            if(document.form.cNPwd.value==""||document.form.rcNPwd.value==""){
+                alert("请输入新密码！");
+                return false;
+            }
+            if(document.form.cPwd.value==document.form.cPwd.value){
+                alert("输入的原密码与新密码不能相同！");
+                return false;
+            }
         }
     </script>
 </head>
@@ -83,7 +96,7 @@
     }
 </style>
 <body style="background: url(../../../images/t5.jpg) ; background-size:100% 100% ; background-attachment: fixed">
-<form  action="/customer/updatePass" method="post" OnSubmit="return yz();" class="basic-grey">
+<form  name="form" action="/customer/updatePass" method="post" OnSubmit="return yz();" class="basic-grey">
     <h1 align="center">修改密码</h1>
     <p align="center">
 

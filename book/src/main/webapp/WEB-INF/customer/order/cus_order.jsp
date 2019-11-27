@@ -69,7 +69,7 @@
                         ${map.book.bookName}
                     </td>
                     <td>
-                        ${map.oSta==0?'待发货':map.oSta==1?'已发货':map.oSta==2?'交易成功':map.oSta==3?'已受理':'未受理'}
+                        ${map.oSta==0?'待发货':map.oSta==1?'已发货':map.oSta==2?'交易成功':map.oSta==3?'已受理':map.oSta==4?'未受理':map.oSta==5?'已退货':map.oSta==6?'已退款':'未知状态'}
                     </td>
                     <td><input  type="hidden" name="oSta" value="${map.oSta}" style="display: none" />
                         <a href="/order/updateOrderOfUser?oId=${map.oId}&oSta=${map.oSta}" onclick="return sure();">申请退款</a>
