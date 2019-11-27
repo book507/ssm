@@ -16,7 +16,7 @@
                 alert("请输入新密码！");
                 return false;
             }
-            if(document.form.cPwd.value==document.form.cPwd.value){
+            if(document.form.cPwd.value==document.form.cNPwd.value){
                 alert("输入的原密码与新密码不能相同！");
                 return false;
             }
